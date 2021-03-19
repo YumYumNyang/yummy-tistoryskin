@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://unpkg.com/nes.css/css/nes.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./stylelo.css" />
     <!--순서 중요-->
-    <link rel="stylesheet" href="./style.css" />
     <title>[##_title_##]</title>
     <!--[if lt IE 9]>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -19,9 +19,28 @@
 				$(".lst-link").not(":has(.lst-img)").prepend("<span class=lst-img><img src=//i1.daumcdn.net/thumb/C200x200/?fname=./images/noimg.jpg></span>");
 				$(".c-link").not(":has(.lst-img)").prepend("<span class=lst-img><img src=//i1.daumcdn.net/thumb/C264x200/?fname=./images/noimg.jpg></span>");
       });
-</script>
-
-
+    </script>
+    <script>
+          function invisibleAside() {
+              var aside = document.getElementById("aside")
+              var oldParent = document.getElementById('container');
+              aside.parentElement.remove();
+              oldParent.appendChild(aside);
+              aside.style.cssText = "display:none;";
+              document.getElementById('aside-close-btn').style.cssText = "display:none;";
+          }
+          function visibleAside(){
+            var oldParent = document.getElementById('container');
+            var oldChild = document.getElementById('aside');
+            var wrapper = document.createElement('div');
+            
+            oldParent.appendChild(wrapper);
+            wrapper.appendChild(oldChild);
+            wrapper.style.cssText = "width: 100%; height: 100%; background: rgb(26,26,26); background: linear-gradient(to right, rgba(26, 26, 26), rgba(26, 26, 26, 0)) !important; position:fixed; top:0; left:0; z-index: 11; overflow:scroll "
+            oldChild.style.cssText = 'margin: 20px;display: flex; background: rgb(26,26,26);'
+            document.getElementById('aside-close-btn').style.cssText = 'display:flex; position: fixed; right: 20px; top:20px;';
+          }
+      </script>
   </head>
   <body id="[##_body_id_##]" > 
     <s_t3>
@@ -44,79 +63,21 @@
             <span><a>LOGOUT</a></span>
           </label> 
         </div>
-
-        
-          <a href="[##_blog_link_##]">
-             <div id="blog-title" class="glitch">
-              <span class="glitch__color glitch__color--red">yumyum 
+        <a href="[##_blog_link_##]">
+            <div id="blog-title" class="glitch">
+            <span class="glitch__color glitch__color--red">yumyum 
 yummy-coding!</span>
-               <span class="glitch__color glitch__color--blue">yumyum 
+              <span class="glitch__color glitch__color--blue">yumyum 
 yummy-coding!</span>
-               <span class="glitch__color glitch__color--green">yumyum 
+              <span class="glitch__color glitch__color--green">yumyum 
 yummy-coding!</span>
-               <span class="glitch__main">yumyum 
+              <span class="glitch__main">yumyum 
 yummy-coding!</span>
-               <span class="glitch__line glitch__line--first"></span>
-               <span class="glitch__line glitch__line--second"></span>
-               <!-- [##_title_##] -->
-              </div>
-          </a>
-            <!-- <div class="header-menu" >
-              <label>
-                <input type="radio" class="nes-radio is-dark" name="answer-dark" checked />
-                <span>[##_category_list_##]</span>
-              </label>
-              
+              <span class="glitch__line glitch__line--first"></span>
+              <span class="glitch__line glitch__line--second"></span>
             </div>
-          -->
+        </a>
         </header>
-          <div class="sticky-header">
-               <ul class="category_list">
-               [##_category_list_##]
-             <!-- <li class="">
-            <a class="link_item">
-              카테고리1<span class="c_cnt">(3)</span>
-                        </a>
-  
-                      <ul class="sub_category_list">
-                            <li class="">
-                  <a class="link_sub_item" >
-                    카테고리 1-1
-                                        <span class="c_cnt">(1)</span>
-                    
-                                    </a>
-                </li>
-                            <li class="">
-                  <a class="link_sub_item" href="/category/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC1/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC%201-2">
-                    카테고리 1-2
-                                        <span class="c_cnt">(0)</span>
-                    
-                                    </a>
-                </li>
-                        </ul>
-            
-          </li>
-                <li class="">
-            <a class="link_item" href="/category/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC2">
-              카테고리2													<span class="c_cnt">(0)</span>
-              
-                        </a>
-  
-                      <ul class="sub_category_list">
-                            <li class="">
-                  <a class="link_sub_item" href="/category/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC2/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC2-1">
-                    카테고리2-1
-                                        <span class="c_cnt">(0)</span>
-                    
-                                    </a>
-                </li>
-                        </ul>
-            
-          </li>
-            </ul>
-        </li> -->
-  </ul>
-</div>
             <!-- 검색 -->
               <!-- <s_search id="search">
                 <input
@@ -129,11 +90,27 @@ yummy-coding!</span>
                 />
                 <button type="button" class="nes-btn is-primary" onclick="[##_search_onclick_submit_##]">SEARCH</div>
               </s_search> -->
-            
+      <div>
+      <!-- categorylist start -->
+      <div>
+
+      </div>
+      <!-- categorylist end -->
+      <!-- sidebar button start-->
+      <div id="main-btn" class="nes-pointer" onclick="visibleAside();">
+        <div class="nes-balloon from-right ">
+          <p>CLICK HERE!</p>
+        </div>
+        <i class="nes-octocat animate" ></i>
+        <i class="nes-icon is-medium heart" ></i>
+      </div>
+      <!-- sidebar button end -->
 
 
       <section id="container">
-        <aside id="aside" class="sidebar">
+        <!-- sidebar start -->
+        <aside id="aside" onfocus="console.log('focus');">
+          <i id="aside-close-btn" class="nes-icon close is-medium" onclick="invisibleAside();"></i>
           <s_if_var_view-profile>
             <div class="profile">
               <img src="./images/spacecat.jpeg" />
@@ -141,7 +118,9 @@ yummy-coding!</span>
                 <div class="desc">[##_desc_##]</div>
             </div>
           </s_if_var_view-profile>
-
+          <div style={{"display":'flex'}}>
+           [##_category_list_##]
+          </div>
           <div id="sidebar-box">
             <s_sidebar>
               <s_sidebar_element>
@@ -280,8 +259,8 @@ yummy-coding!</span>
               <s_sidebar_element>
                 <!-- 방문자수 -->
                 <div class="visitor">
-                  <section class="kirby-talking"><span class="nes-balloon from-right">Thank u for visiting my BLOGGG!💕</span>
-                  </section>
+                  <div class="kirby-talking"><span class="nes-balloon from-right">Thank u for visiting my BLOGGG!💕</span>
+                  </div>
                   <i class="nes-kirby"></i>
                   <div class="list-visit">
                     <dl class="list-visitor">
@@ -310,7 +289,7 @@ yummy-coding!</span>
             </s_sidebar>
           </div>
         </aside>
-        <!-- side_bar close -->
+        <!-- sidebar close -->
 
         <!-- content start -->
         <div id="content" >
@@ -522,21 +501,18 @@ yummy-coding!</span>
               <div class="item_detail">
                 <!-- 제목,날짜, -->
                 <div class="item_text">
-                  <h2 class="item_tit">
-                    <a href="[##_article_rep_link_##]"
-                      >[##_article_rep_title_##]</a
-                    >
-                    <div class="Cate" style="display: none">
-                      [##_article_rep_category_link_##]
-                    </div>
-                    <span style="margin-left: 10px">
+                  <a href="[##_article_rep_link_##]">
+                  <h1 class="item_title">
+                  [##_article_rep_title_##]
+                  </h1>
+                  </a>
+                   
                       <s_ad_div>
                         <a href="[##_s_ad_m_link_##]">수정</a>
                         <span>ㅣ</span>
                         <a href="#" onclick="[##_s_ad_d_onclick_##]">삭제</a>
                       </s_ad_div>
-                    </span>
-                  </h2>
+          
                   <div class="item_day">[##_article_rep_date_##]</div>
                 </div>
                 <div>
@@ -555,40 +531,6 @@ yummy-coding!</span>
                       </dl>
                     </s_tag_label>
                     <!-- SNS공유 -->
-                    <div class="detail_sns">
-                      <a
-                        href="#"
-                        onclick="javascript:window.open('https://www.facebook.com/sharer/sharer.php?u=' +encodeURIComponent(document.URL)+'&t='+encodeURIComponent(document.title), 'facebooksharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
-                        target="_blank"
-                        alt="Share on Facebook"
-                      >
-                        <img src="./images/facebook_logo.jpg" />
-                      </a>
-                      <a
-                        href="#"
-                        onclick="javascript:window.open('https://twitter.com/intent/tweet?text=[%EA%B3%B5%EC%9C%A0]%20' +encodeURIComponent(document.URL)+'%20-%20'+encodeURIComponent(document.title), 'twittersharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
-                        target="_blank"
-                        alt="Share on Twitter"
-                      >
-                        <img src="./images/twitter_logo.jpg" />
-                      </a>
-                      <a
-                        href="#"
-                        onclick="javascript:window.open('https://story.kakao.com/s/share?url='+encodeURIComponent(document.URL), 'kakaostorysharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600');return false;"
-                        target="_blank"
-                        alt="Share on kakaostory"
-                      >
-                        <img src="./images/kaka_logo.jpg" />
-                      </a>
-                      <a
-                        href="#"
-                        onclick="javascript:window.open('http://share.naver.com/web/shareView.nhn?url=' +encodeURIComponent(document.URL)+'&title='+encodeURIComponent(document.title), 'naversharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"
-                        target="_blank"
-                        alt="Share on Naver"
-                      >
-                        <img src="./images/naver_logo.jpg" />
-                      </a>
-                    </div>
                   </div>
                   <!-- 관련글 -->
                   <s_article_related>
@@ -1121,7 +1063,6 @@ function login() {};
    });
    
     </script> -->
-  <script src="./glitch.js"></script>
    </body>
 </html>
 
