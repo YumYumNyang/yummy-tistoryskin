@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://unpkg.com/nes.css/css/nes.css" rel="stylesheet" />
-    <link rel="stylesheet" href="./stylelo.css" />
+    <link rel="stylesheet" href="./style.css" />
     <!--순서 중요-->
     <title>[##_title_##]</title>
     <!--[if lt IE 9]>
@@ -13,13 +13,33 @@
 		<!--[if gte IE 9]><!-->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <!--<![endif]-->
-    <script>
-			// 노이미지
-			$(function() {
-				$(".lst-link").not(":has(.lst-img)").prepend("<span class=lst-img><img src=//i1.daumcdn.net/thumb/C200x200/?fname=./images/noimg.jpg></span>");
+    <!--<script>
+		// 노이미지
+		 $(function() {
+				$(".lst-link").not(":has(.lst-img)").prepend("<span class=lst-img><></span>");
 				$(".c-link").not(":has(.lst-img)").prepend("<span class=lst-img><img src=//i1.daumcdn.net/thumb/C264x200/?fname=./images/noimg.jpg></span>");
       });
+    </script>-->
+    <script>
+      (function(){
+        document.querySelectorAll(".article-main > div > p > span").forEach(ele => {
+          console.log(ele.style.color);
+          if(ele.style.color == 'black'){
+            ele.style.color = 'white';
+          }
+        })
+      })();
     </script>
+    <script>
+      //댓글
+      (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://testtistoryblog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     <script>
           function invisibleAside() {
               var aside = document.getElementById("aside")
@@ -96,7 +116,7 @@ yummy-coding!</span>
 
       </div>
       <!-- categorylist end -->
-      <!-- sidebar button start-->
+      <!-- aside button start-->
       <div id="main-btn" class="nes-pointer" onclick="visibleAside();">
         <div class="nes-balloon from-right ">
           <p>CLICK HERE!</p>
@@ -104,11 +124,11 @@ yummy-coding!</span>
         <i class="nes-octocat animate" ></i>
         <i class="nes-icon is-medium heart" ></i>
       </div>
-      <!-- sidebar button end -->
+      <!-- aside button end -->
 
 
       <section id="container">
-        <!-- sidebar start -->
+        <!-- aside start -->
         <aside id="aside" onfocus="console.log('focus');">
           <i id="aside-close-btn" class="nes-icon close is-medium" onclick="invisibleAside();"></i>
           <s_if_var_view-profile>
@@ -289,7 +309,7 @@ yummy-coding!</span>
             </s_sidebar>
           </div>
         </aside>
-        <!-- sidebar close -->
+        <!-- aside close -->
 
         <!-- content start -->
         <div id="content" >
@@ -517,7 +537,7 @@ yummy-coding!</span>
                 </div>
                 <div>
                   <!-- 게시물 글영역 -->
-                  <div style="padding: 0 0 60px" class="article_main">
+                  <div class="article-main">
                     [##_article_rep_desc_##]
                   </div>
                   <div style="margin-bottom: 60px" class="article_tag clearfix">
@@ -635,152 +655,7 @@ yummy-coding!</span>
                       </ol>
                     </s_rp_container>
                   </div>
-                  <s_rp>
-                    <div id="communicate">
-                      <s_rp_container>
-                        <h3 class="com_tit">COMMENT</h3>
-                        <div class="com_list">
-                          <ul class="list_reply">
-                            <s_rp_rep>
-                              <li
-                                id="[##_rp_rep_id_##]"
-                                class="[##_rp_rep_class_##]"
-                              >
-                                <span class="reply_content">
-                                  <span class="tit_nickname"
-                                    >[##_rp_rep_name_##]
-                                    <span class="ico_skin ico_secret"></span>
-                                  </span>
-                                  <span class="txt_date"
-                                    >[##_rp_rep_date_##]</span
-                                  >
-                                  <span class="txt_reply"
-                                    >[##_rp_rep_desc_##]</span
-                                  >
-                                </span>
-                                <button type="button" class="btn_replymenu">
-                                  <span class="ico_skin ico_replymenu"
-                                    >댓글 메뉴</span
-                                  >
-                                </button>
-                                <div class="my_edit">
-                                  <a
-                                    href="#"
-                                    onclick="[##_rp_rep_onclick_delete_##]"
-                                    class="link_edit"
-                                    >수정/삭제</a
-                                  >
-                                  <a
-                                    href="#"
-                                    onclick="[##_rp_rep_onclick_reply_##]"
-                                    class="link_edit"
-                                    >댓글쓰기</a
-                                  >
-                                </div>
-                              </li>
-                              <s_rp2_container>
-                                <s_rp2_rep>
-                                  <li
-                                    id="[##_rp_rep_id_##]"
-                                    class="re_reply [##_rp_rep_class_##]"
-                                  >
-                                    <span class="reply_content">
-                                      <span class="tit_nickname"
-                                        >[##_rp_rep_name_##]
-                                        <span
-                                          class="ico_skin ico_secret"
-                                        ></span>
-                                      </span>
-                                      <span class="txt_date"
-                                        >[##_rp_rep_date_##]</span
-                                      >
-                                      <span class="txt_reply"
-                                        >[##_rp_rep_desc_##]</span
-                                      >
-                                    </span>
-                                    <button type="button" class="btn_replymenu">
-                                      <span class="ico_skin ico_replymenu"
-                                        >댓글 메뉴</span
-                                      >
-                                    </button>
-                                    <div class="my_edit">
-                                      <a
-                                        href="#"
-                                        onclick="[##_rp_rep_onclick_delete_##]"
-                                        class="link_edit"
-                                        >수정/삭제</a
-                                      >
-                                    </div>
-                                  </li>
-                                </s_rp2_rep>
-                              </s_rp2_container>
-                            </s_rp_rep>
-                          </ul>
-                        </div>
-                      </s_rp_container>
-                      <s_rp_input_form>
-                        <div class="com_write clearfix">
-                          <s_rp_member>
-                            <s_rp_guest>
-                              <div class="name guest first">
-                                <input
-                                  placeholder="이름을 입력해주세요."
-                                  id="[##_rp_input_name_##]"
-                                  type="text"
-                                  name="[##_rp_input_name_##]"
-                                  value="[##_guest_name_##]"
-                                />
-                              </div>
-                              <div class="password guest">
-                                <input
-                                  placeholder="비밀번호을 입력해주세요."
-                                  id="[##_rp_input_password_##]"
-                                  type="password"
-                                  maxlength="8"
-                                  name="[##_rp_input_password_##]"
-                                  value="[##_rp_admin_check_##]"
-                                />
-                              </div>
-                            </s_rp_guest>
-                          </s_rp_member>
-                          <div class="clearfix">
-                            <textarea
-                              width="100%"
-                              placeholder="내용을 입력해주세요."
-                              name="[##_rp_input_comment_##]"
-                              rows="5"
-                              cols="50"
-                            ></textarea>
-                          </div>
-                          <div class="clearfix">
-                            <div class="secret">
-                              <input
-                                id="secret"
-                                type="checkbox"
-                                name="[##_rp_input_is_secret_##]"
-                                class="ch_box"
-                              />
-                              <label for="secret" class="se_label">
-                                <span>비공개</span>
-                                <svg class="svg-icon" viewBox="0 -3.2 9.5 22">
-                                  <path
-                                    d="M1.7,4.4V3.3C1.7,1.5,3.2,0,5,0c1.8,0,3.3,1.5,3.3,3.3v1.1H7.2V3.3c0-1.2-1-2.2-2.2-2.2s-2.2,1-2.2,2.2v1.1H1.7z M10,5.6v7.8H0V5.6H10z M8.9,6.7H1.1v5.6h7.8V6.7z"
-                                  ></path>
-                                </svg>
-                              </label>
-                            </div>
-                            <div class="submit">
-                              <input
-                                type="submit"
-                                value="댓글남기기"
-                                onclick="[##_rp_onclick_submit_##]"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      </s_rp_input_form>
-                    </div>
-                  </s_rp>
+                  <div id="disqus_thread"></div>
                 </div>
               </div>
             </s_permalink_article_rep>
