@@ -364,6 +364,19 @@ a:active {
   align-items: center;
   margin-right: 5vw;
   width: 270px;
+  /* 카테고리 리스트 */
+  #category{
+    min-width: 220px;
+    display: flex;
+    flex-direction: column;
+    
+  }
+  /* 공지사항 */ 
+  #notice{
+    a{
+      font-weight: bold;
+    }
+  }
   /* 프로필 */
   .profile {
     min-width: 220px;
@@ -386,17 +399,39 @@ a:active {
       font-size: 20px;
     }
   }
+  /* 태그 */
+  #tags{
+    display: flex;
+    flex-direction: column;
+    a::before{
+        content:"#"; 
+        padding-right: 5px;
+        color:$pointColor;
+        font-size: 1.1em;
+    }
+  }
   .nes-container {
     margin-bottom: 30px !important;
     min-height: 250px;
+    img{
+      display: none;
+    }
+    .rep-title{
+      font-weight: bold;
+    }
+    .date{
+      font-size: 13px;
+    }  
   }
+
   #sidebar-box {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
   } 
+
   div,  p {
-  background-color: $background !important;
+    background-color: $background !important;
   }
   .title {
     letter-spacing: 3px;
@@ -437,6 +472,7 @@ a:active {
       margin-top: 10px;
     }
   }
+  /* 달력 */
   .calendar {
     display: flex;
     align-items: center;
@@ -451,6 +487,7 @@ a:active {
       text-align: center;
     } 
   }
+  
 }
 
 .visitor {
@@ -593,7 +630,8 @@ a:active {
 @media screen and (max-width: 1024px){
   /* 사이드바 숨김 */
   #aside{
-    display: none;
+    visibility: hidden;
+    width: 0%;
   }
   /* 블로그 타이틀 */
   #blog-title{
@@ -637,7 +675,8 @@ a:active {
 @media screen and (max-width : 768px){
   /* 사이드바 숨김 */
   #aside{
-    display: none;
+    width: 0%;
+    visibility: hidden;
   }
   /* 블로글 타이틀 */
   #blog-title{
@@ -656,10 +695,20 @@ a:active {
   
 }
 
+  @-webkit-keyframes slide-down {
+      0% { opacity: 0; -webkit-transform: translateY(-100%); }   
+    100% { opacity: 1; -webkit-transform: translateY(0); }
+}
+    @-moz-keyframes slide-down {
+      0% { opacity: 0; -moz-transform: translateY(-100%); }   
+    100% { opacity: 1; -moz-transform: translateY(0); }
+}
 @media screen and (max-width : 480px){
   /* 사이드바 숨김 */
   #aside{
-    display: none;
+    width: 0%;
+    visibility: hidden;
+  
   }
   /* 블로그 타이틀 */
   #blog-title{
