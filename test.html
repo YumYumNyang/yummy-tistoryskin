@@ -5,31 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://unpkg.com/nes.css/css/nes.css" rel="stylesheet" />
     <link rel="stylesheet" href="./style.css" />
-    <!--순서 중요-->
-    <title>[##_title_##]</title>
-    <!--[if lt IE 9]>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <![endif]-->
-		<!--[if gte IE 9]><!-->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <!--<![endif]-->
-    <!--<script>
-		// 노이미지
-		 $(function() {
-				$(".lst-link").not(":has(.lst-img)").prepend("<span class=lst-img><></span>");
-				$(".c-link").not(":has(.lst-img)").prepend("<span class=lst-img><img src=//i1.daumcdn.net/thumb/C264x200/?fname=./images/noimg.jpg></span>");
-      });
-    </script>-->
-    <script>
-      (function(){
-        document.querySelectorAll(".article-main > div > p > span").forEach(ele => {
-          console.log(ele.style.color);
-          if(ele.style.color == 'black'){
-            ele.style.color = 'white';
-          }
-        })
-      })();
-    </script>
+    <title>[##_page_title_##]</title>
     <script>
       //댓글
       (function() { // DON'T EDIT BELOW THIS LINE
@@ -57,11 +33,10 @@
             oldParent.appendChild(wrapper);
             wrapper.appendChild(oldChild);
             wrapper.style.cssText = "width: 100%; height: 100%; background: rgb(26,26,26); background: linear-gradient(to right, rgba(26, 26, 26), rgba(26, 26, 26, 20%)) !important; position:fixed; top:0; left:0; z-index: 11; "
-            oldChild.classList.add('is-open');
-            //oldChild.style.cssText = 'padding: 20px; height: 100%; overflow:scroll; width: 290px; visibility:visible; background: rgb(26,26,26); border-radius: 0 50px 50px 0; '
+            oldChild.style.cssText = 'display: flex; padding: 20px; height: 100%; overflow:scroll; width: 290px; background: rgb(26,26,26); border-radius: 0 50px 50px 0; '
             document.getElementById('aside-close-btn').style.cssText = 'display:flex; position: fixed; right: 20px; top:20px;';
           }
-      </script>
+    </script>
   </head>
   <body id="[##_body_id_##]" > 
     <s_t3>
@@ -878,69 +853,7 @@ yummy-coding!</span>
         </div>
         <!-- content close -->
       </section>
-
-      <footer id="footer">
-        <div class="inner">
-          <div class="order-menu">
-            <s_if_var_order-link-1-title>
-              <a href="[##_var_order-link-1-url_##]"
-                >[##_var_order-link-1-title_##]</a
-              >
-            </s_if_var_order-link-1-title>
-            <s_if_var_order-link-2-title>
-              <a href="[##_var_order-link-2-url_##]"
-                >[##_var_order-link-2-title_##]</a
-              >
-            </s_if_var_order-link-2-title>
-            <s_if_var_order-link-3-title>
-              <a href="[##_var_order-link-3-url_##]"
-                >[##_var_order-link-3-title_##]</a
-              >
-            </s_if_var_order-link-3-title>
-            <s_if_var_order-link-4-title>
-              <a href="[##_var_order-link-4-url_##]"
-                >[##_var_order-link-4-title_##]</a
-              >
-            </s_if_var_order-link-4-title>
-          </div>
-          <a href="#" class="page-top">TOP</a>
-          <p class="meta">
-            <s_if_var_footer-text-1
-              >[##_var_footer-text-1_##]</s_if_var_footer-text-1
-            >
-          </p>
-          <p class="copyright">
-            <s_if_var_footer-text-2
-              >[##_var_footer-text-2_##]</s_if_var_footer-text-2
-            >
-          </p>
-        </div>
-      </footer>
-      <!-- footer close -->
     </s_t3>
-    <!-- s_t3 close -->
-    <!-- <script src="./images/script.js"></script> -->
-    <!-- <script>
-      //텍스트 로그인 로그아웃 
-function login() {};              
-  $(function() {
-    if(window.T.config.USER.name) {
-    	$('#login').text('LOGOUT');
-    	$('#login2').text('LOGOUT');
-        login = function() { 
-        	document.location.href = "https://www.tistory.com/auth/logout?redirectUrl=" +  encodeURIComponent(window.location.href); 
-        };
-    }
-    else {
-    	$('#login').text('LOGIN');
-    	$('#login2').text('LOGIN');
-    	login = function() { 
-    		document.location.href = "https://www.tistory.com/auth/login?redirectUrl=" +  encodeURIComponent(window.location.href);
-    	};
-      }
-   });
-   
-    </script> -->
    </body>
 </html>
 
