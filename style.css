@@ -19,7 +19,6 @@
  */
 /* Web Font Load */
 @import url("https://fonts.googleapis.com/css?family=Nanum+Myeongjo:800&subset=korean");
-@import url("//fonts.googleapis.com/earlyaccess/notosanskr.css");
 @font-face {
   font-family: "DungGeunMo";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff") format("woff");
@@ -39,12 +38,50 @@
   font-weight: normal;
   font-style: normal;
 }
-@font-face {
-  font-family: "pixel";
-  src: url("./images/pixel-art-struct.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-  unicode-range: U+0041-005A, U+0061-007A, U+0030-0039;
+::selection {
+  background: #61dbfb;
+  color: #fff;
+  text-shadow: none;
+}
+
+::-moz-selection {
+  background: #61dbfb;
+  color: #fff;
+  text-shadow: none;
+}
+
+::-webkit-selection {
+  background: #61dbfb;
+  color: #fff;
+  text-shadow: none;
+}
+
+/* click effect */
+.clickEffect {
+  position: fixed;
+  box-sizing: border-box;
+  border-style: solid;
+  border-color: #FFFFFF;
+  border-radius: 50%;
+  animation: clickEffect 0.4s ease-out;
+  z-index: 999999;
+}
+
+@keyframes clickEffect {
+  0% {
+    opacity: 1;
+    width: 0.5em;
+    height: 0.5em;
+    margin: -0.25em;
+    border-width: 0.5em;
+  }
+  100% {
+    opacity: 0.2;
+    width: 15em;
+    height: 15em;
+    margin: -7.5em;
+    border-width: 0.03em;
+  }
 }
 html,
 body {
@@ -164,7 +201,92 @@ a:active {
 }
 
 /* 헤더 */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 4px;
+  z-index: 5;
+  background: #61dbfb;
+}
+.progress-bar .progress {
+  width: 0%;
+  height: 4px;
+  background-color: #a36aff;
+}
+
+#sticky-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 5;
+  width: 100%;
+  height: 70px;
+  padding: 0 5vw;
+  top: 4;
+  position: -webkit-sticky;
+  /* 사파리 브라우저 지원 */
+  position: sticky;
+  background: linear-gradient(-180deg, #1a1a1a 0%, rgba(26, 26, 26, 0.9) 50%, rgba(26, 26, 26, 0.7) 80%, rgba(26, 26, 26, 0.5) 90%, rgba(26, 26, 26, 0) 100%);
+}
+#sticky-menu .sidebar-btn {
+  display: none;
+  margin-left: 10px;
+}
+#sticky-menu .sidebar-btn .nes-icon .is-medium {
+  margin: 0 !important;
+}
+#sticky-menu .right-side {
+  display: flex;
+}
+#sticky-menu #search form {
+  align-items: center;
+  display: flex;
+}
+#sticky-menu #search .nes-input {
+  height: 44px !important;
+  width: 25vw;
+  background-color: transparent !important;
+  margin-right: 20px;
+}
+#sticky-menu #search .nes-btn {
+  color: white !important;
+  font-family: "cute";
+  background-color: #a36aff;
+}
+#sticky-menu #search .nes-btn::after {
+  box-shadow: inset -6px -6px #5b339b;
+}
+#sticky-menu #search .nes-btn:active::after {
+  box-shadow: inset 4px 4px 4px 4px #5b339b;
+}
+#sticky-menu #blog-menu ul {
+  display: flex;
+  font-size: 18px;
+}
+#sticky-menu #blog-menu ul li {
+  display: flex;
+  justify-content: center;
+  max-width: 100px;
+  margin-right: 20px;
+}
+#sticky-menu #blog-menu a {
+  font-family: "cute";
+  word-break: keep-all;
+}
+#sticky-menu #blog-menu a::before {
+  content: "#include <";
+  font-size: 15px;
+  color: #a36aff;
+}
+#sticky-menu #blog-menu a::after {
+  content: ">";
+  font-size: 15px;
+  color: #a36aff;
+}
+
 #header {
+  padding: 2vw 8vw;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -179,8 +301,44 @@ a:active {
 #header .header-menu span {
   margin-right: 50px;
 }
-#header #profile {
+#header .header-menu a {
+  padding-left: 20px;
+}
+
+/* button */
+.toolbar_rb {
+  bottom: 88px !important;
+  right: 130px !important;
+}
+
+.menu_toolbar .btn_subscription {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(24, 24, 24, 0.8) !important;
+  border-radius: 100% !important;
+  width: 90px !important;
+  height: 90px !important;
+  padding: 0 !important;
+}
+.menu_toolbar .btn_subscription strong {
+  display: none !important;
+}
+.menu_toolbar .btn_subscription em {
+  display: none !important;
+}
+.menu_toolbar .btn_subscription span {
+  display: none !important;
+}
+
+.up-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  position: fixed;
+  bottom: 25px;
+  right: 30px;
 }
 
 /* 블로그 타이틀 */
@@ -320,96 +478,326 @@ a:active {
 #container {
   display: flex;
   width: 100%;
-  height: 100%;
-  flex: 1;
-  padding: 5vw;
+  padding: 5vw 3vw;
 }
 
-#search {
+/* content start */
+#content {
   display: flex;
-  width: 80%;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 1100px;
+  min-width: 320px;
 }
 
-#search,
-.nes-input {
-  background-color: transparent !important;
+/* content end */
+/* article-list start */
+.thumbnail img {
+  width: 290px !important;
+  height: 250px !important;
+  border-radius: 5px;
+  object-fit: cover !important;
+  /* Do not scale the image */
+  object-position: center !important;
+  /* Center the image within the element */
+}
+
+#article-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  max-width: 930px;
+}
+#article-list .article {
+  display: flex;
+  flex-direction: column;
+  margin-top: 60px;
+  width: 310px;
+  padding: 10px;
+}
+#article-list .article .article-category {
+  margin-top: 10px !important;
+  color: #a36aff !important;
+}
+#article-list .article .article-text {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+#article-list .article .article-text .article-title {
+  font-size: 1.2rem;
+}
+#article-list .article .article-text .article-summary {
+  margin-top: 10px;
+  display: -webkit-box;
+  max-width: 300px;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+#article-list .article .article-text .article-date {
+  color: #b1b1b1;
+  font-size: 0.7rem;
+}
+
+/* article-list end */
+.b-article {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.b-article .b-article-text {
+  display: flex;
+  justify-content: space-between;
+  font-family: "cute";
+  font-size: 1.2em;
+  padding: 10px;
+}
+.b-article .b-article-text .b-article-more {
+  color: #a36aff;
+}
+.b-article .related-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.b-article .related-list .related-item {
+  width: 310px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.b-article .related-list .related-info {
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.b-article .related-list .related-info .related-text {
+  font-size: 1.2rem;
+}
+.b-article .related-list .related-info .related-date {
+  color: #b1b1b1;
+  font-size: 0.7rem;
+}
+
+/* related start */
+/* related end */
+/* 게시글 상세항목 start*/
+.item-detail .item-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.item-detail .item-text .item-category {
+  font-size: 20px;
+}
+.item-detail .item-text .item-title {
+  max-width: 800px;
+  word-break: keep-all;
+  word-wrap: break-word;
+}
+
+.tag_sns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.article-sns {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10px 35px 10px;
+}
+.article-sns .article-sns-tit {
+  font-family: "cute";
+  font-size: 1.2em;
+  padding-bottom: 10px;
+}
+.article-sns .detail_sns {
+  display: flex;
+}
+.article-sns .detail_sns a {
   margin-right: 10px;
 }
 
-#search .nes-btn.is-primary {
-  font-size: 25px;
-  color: white !important;
-  letter-spacing: 3px;
-  font-weight: 800;
-  font-weight: bold;
-  background-color: #f8afff;
+.article-tag {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10px 35px 10px;
+}
+.article-tag .article-tag-tit {
+  font-family: "cute";
+  font-size: 1.2em;
+  padding-bottom: 10px;
+}
+.article-tag .article-tag-list {
+  display: flex;
 }
 
-#search .nes-btn.is-primary::after {
-  box-shadow: inset -6px -6px #ff90f9;
+.article-tag-item {
+  visibility: hidden;
+}
+.article-tag-item a {
+  visibility: visible;
+}
+.article-tag-item a::before {
+  content: "#";
+  padding-right: 5px;
+  color: #61dbfb;
 }
 
-#search .nes-btn.is-primary:active::after {
-  box-shadow: inset 4px 4px 4px 4px #ff90f9;
+/* 게시글 상세항목 end*/
+/* 검색결과 start */
+.not-found {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 500px;
 }
 
-#main-button {
-  display: none;
+.list-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
+.list-tit {
+  text-align: center;
+}
+
+.list-num {
+  text-align: center;
+}
+
+.paging {
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  font-size: 15px;
+  font-family: "cute";
+}
+.paging .selected {
+  color: #61dbfb;
+}
+
+.prev {
+  padding: 0 15px;
+}
+
+.next {
+  padding: 0 15px;
+}
+
+/* 검색결과 end */
 .nes-pointer {
   display: none;
 }
 
 /* aside start */
-#aside-close-btn {
-  display: none;
+.nes-icon.close::before {
+  color: #d8d8d8 !important;
 }
 
-.nes-icon.close::before {
-  color: white !important;
+#aside-close-btn {
+  width: 100%;
+  justify-content: flex-end;
+  display: none;
+  margin-bottom: 30px;
+  margin-right: 30px;
+}
+
+.aside-mask {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 99;
+  top: 0;
+  right: 0;
 }
 
 #aside {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-right: 5vw;
   width: 270px;
+  margin-left: 15px;
   /* 카테고리 리스트 */
   /* 공지사항 */
   /* 프로필 */
   /* 태그 */
   /* 달력 */
 }
+#aside #search {
+  width: 220px;
+  display: none;
+}
 #aside #category {
   min-width: 220px;
   display: flex;
+  padding-bottom: 30px;
   flex-direction: column;
+  font-size: 20px;
+}
+#aside #category .link_tit {
+  font-weight: bold;
+  color: #a36aff !important;
+}
+#aside #category .link_item {
+  font-weight: bold;
+}
+#aside #category .link_sub_item {
+  display: flex;
+  align-items: center;
+  font-size: 17px;
+}
+#aside #category .link_sub_item a {
+  color: #b1b1b1 !important;
+}
+#aside #category .link_sub_item::before {
+  background-image: url("./images/cloud.png");
+  background-size: 40px 40px;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  content: "";
 }
 #aside #notice a {
   font-weight: bold;
 }
 #aside .profile {
+  margin-top: 30px;
   min-width: 220px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-#aside .profile img {
-  width: 220px;
-  height: 220px;
-  border-radius: 100%;
-  box-shadow: 5px 5px 5px 5px black;
-}
-#aside .profile .blogger {
+#aside .profile #blogger {
   margin-top: 10px;
   font-size: 25px;
+  color: #61dbfb;
 }
-#aside .profile .desc {
+#aside .profile #desc {
   margin-top: 10px;
   font-size: 20px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+#aside .profile .title {
+  margin-top: -50px !important;
+}
+#aside .profile .nes-container {
+  min-height: 100px;
+}
+#aside .profile .nes-container img {
+  width: 150px;
+  height: 150px;
+  border-radius: 10%;
 }
 #aside #tags {
   display: flex;
@@ -425,7 +813,7 @@ a:active {
   margin-bottom: 30px !important;
   min-height: 250px;
 }
-#aside .nes-container img {
+#aside .nes-container a img {
   display: none;
 }
 #aside .nes-container .rep-title {
@@ -444,7 +832,7 @@ a:active {
 }
 #aside .title {
   letter-spacing: 3px;
-  font-family: "cute", "PFStardust";
+  font-family: "cute", "PFStardust", "DungGeunMo";
   text-align: center;
   text-transform: uppercase;
   font-size: 1.5rem !important;
@@ -467,6 +855,7 @@ a:active {
 #aside .social-channel span {
   text-align: center;
   font-size: 22px;
+  font-family: "cute", "PFStardust";
 }
 #aside .social-channel-content {
   display: flex;
@@ -548,61 +937,76 @@ a:active {
 
 @keyframes kirbyMoving {}
 /* aside end */
-/* content start */
-.article-main {
-  color: white;
-}
+@media only screen and (max-width: 1260px) {
+  .sidebar-btn {
+    display: flex !important;
+  }
 
-/* content end*/
-.list-item {
-  display: flex;
-}
+  .menu_toolbar {
+    display: flex !important;
+  }
 
-/* category start */
-/* .category-box {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  margin-top: 30px;
-  margin-bottom: 30px;
-}
+  #aside {
+    padding: 50px 0;
+    width: 270px;
+    background-color: #1a1a1a;
+    position: fixed;
+    top: 0px;
+    height: 100%;
+    right: -270px;
+    z-index: 10;
+    transition: All 0.2s ease;
+    -webkit-transition: All 0.2s ease;
+    -moz-transition: All 0.2s ease;
+    -o-transition: All 0.2s ease;
+  }
 
-} */
-/* .categories-title {
-  font-size: 20px;
-}
-.category_list {
-  margin: 10px 10px;
-}
-.sub_category_list {
-  margin-left: 10px;
-}
-.sub_category_list li::before {
-  content: "";
-} */
-.link_tit {
-  display: none;
-}
+  .open {
+    right: 0px !important;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    z-index: 100 !important;
+  }
 
-.sticky-header {
-  z-index: 5;
-  width: 100%;
-  position: -webkit-sticky;
-  /* 사파리 브라우저 지원 */
-  position: sticky;
-  top: 0;
-  display: flex;
-  background: linear-gradient(#1a1a1a, rgba(26, 26, 26, 0)) !important;
-  justify-content: center;
-  padding: 30px 0;
+  #aside-close-btn {
+    display: flex !important;
+  }
 }
-
 @media screen and (max-width: 1024px) {
+  .related-img .thumbnail img {
+    width: 260px !important;
+    height: 200px !important;
+  }
+
+  .related-item {
+    width: 280px !important;
+  }
+
   /* 사이드바 숨김 */
   #aside {
-    display: none;
+    padding: 50px 0;
+    width: 270px;
+    background-color: #1a1a1a;
+    position: fixed;
+    top: 0px;
+    height: 100%;
+    right: -270px;
+    z-index: 10;
+    transition: All 0.2s ease;
+    -webkit-transition: All 0.2s ease;
+    -moz-transition: All 0.2s ease;
+    -o-transition: All 0.2s ease;
+  }
+
+  .open {
+    right: 0px !important;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    z-index: 100 !important;
+  }
+
+  #aside-close-btn {
+    display: flex !important;
   }
 
   /* 블로그 타이틀 */
@@ -641,11 +1045,53 @@ a:active {
   #main-btn .nes-icon {
     display: none;
   }
+
+  #blog-menu li {
+    max-width: 80px !important;
+    font-size: 15px;
+  }
+  #blog-menu li a {
+    margin-right: 7px;
+  }
+  #blog-menu li a::before, #blog-menu li a::after {
+    font-size: 13px;
+  }
 }
 @media screen and (max-width: 768px) {
+  .related-img .thumbnail img {
+    width: 200px !important;
+    height: 160px !important;
+  }
+
+  .related-item {
+    width: 220px !important;
+  }
+
   /* 사이드바 숨김 */
   #aside {
-    display: none;
+    padding: 50px 0;
+    width: 270px;
+    background-color: #1a1a1a;
+    position: fixed;
+    top: 0px;
+    height: 100%;
+    right: -270px;
+    z-index: 10;
+    transition: All 0.2s ease;
+    -webkit-transition: All 0.2s ease;
+    -moz-transition: All 0.2s ease;
+    -o-transition: All 0.2s ease;
+  }
+
+  .open {
+    right: 0px !important;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    z-index: 100 !important;
+  }
+
+  #aside-close-btn {
+    display: flex !important;
   }
 
   /* 블로글 타이틀 */
@@ -659,16 +1105,70 @@ a:active {
   #header .header-menu span {
     margin-right: 20px;
   }
+
+  #sticky-menu #blog-menu li {
+    max-width: 80px !important;
+    font-size: 15px;
+  }
+  #sticky-menu #blog-menu li a {
+    margin-right: 7px;
+  }
+  #sticky-menu #blog-menu li a::before, #sticky-menu #blog-menu li a::after {
+    font-size: 12px;
+  }
+  #sticky-menu #search {
+    display: none;
+  }
 }
 @media screen and (max-width: 480px) {
+  .thumbnail img {
+    width: 330px !important;
+    height: 290px !important;
+  }
+
+  .article {
+    width: 350px !important;
+  }
+
+  .related-img .thumbnail img {
+    width: 180px !important;
+    height: 140px !important;
+  }
+
+  .related-item {
+    width: 200px !important;
+  }
+
   /* 사이드바 숨김 */
   #aside {
-    display: none;
+    padding: 50px 0;
+    width: 270px;
+    background-color: #1a1a1a;
+    position: fixed;
+    top: 0px;
+    height: 100%;
+    right: -270px;
+    z-index: 10;
+    transition: All 0.2s ease;
+    -webkit-transition: All 0.2s ease;
+    -moz-transition: All 0.2s ease;
+    -o-transition: All 0.2s ease;
+  }
+
+  .open {
+    right: 0px !important;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    z-index: 100 !important;
+  }
+
+  #aside-close-btn {
+    display: flex !important;
   }
 
   /* 블로그 타이틀 */
   #blog-title {
-    font-size: 8vw;
+    font-size: 7vw;
   }
 
   #header .header-menu {
@@ -683,6 +1183,20 @@ a:active {
   }
   #main-btn .nes-icon {
     display: flex;
+  }
+
+  #sticky-menu #search {
+    display: none;
+  }
+  #sticky-menu #blog-menu li {
+    font-size: 12px;
+    max-width: 60px !important;
+  }
+  #sticky-menu #blog-menu li a {
+    margin-right: 7px;
+  }
+  #sticky-menu #blog-menu li a::before, #sticky-menu #blog-menu li a::after {
+    font-size: 9px;
   }
 }
 
