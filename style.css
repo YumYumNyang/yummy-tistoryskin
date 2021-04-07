@@ -215,6 +215,20 @@ a:active {
   background-color: #a36aff;
 }
 
+.nes-btn {
+  color: white !important;
+  font-family: "cute";
+  background-color: #a36aff;
+}
+
+.nes-btn::after {
+  box-shadow: inset -6px -6px #5b339b;
+}
+
+.nes-btn:active::after {
+  box-shadow: inset 4px 4px 4px 4px #5b339b;
+}
+
 #sticky-menu {
   display: flex;
   justify-content: space-between;
@@ -248,17 +262,6 @@ a:active {
   width: 25vw;
   background-color: transparent !important;
   margin-right: 20px;
-}
-#sticky-menu #search .nes-btn {
-  color: white !important;
-  font-family: "cute";
-  background-color: #a36aff;
-}
-#sticky-menu #search .nes-btn::after {
-  box-shadow: inset -6px -6px #5b339b;
-}
-#sticky-menu #search .nes-btn:active::after {
-  box-shadow: inset 4px 4px 4px 4px #5b339b;
 }
 #sticky-menu #blog-menu ul {
   display: flex;
@@ -581,8 +584,144 @@ a:active {
   font-size: 0.7rem;
 }
 
-/* related start */
-/* related end */
+/* guest start */
+#entry0Comment {
+  min-width: 70vw;
+}
+
+.nes-balloon.is-dark, .nes-balloon.is-dark.from-left::before, .nes-balloon.is-dark.from-right::before, .nes-balloon.is-dark.from-left::after, .nes-balloon.is-dark.from-right::after {
+  background-color: #1a1a1a;
+}
+
+.nes-balloon.is-dark {
+  box-shadow: 0 0 0 8px #1a1a1a !important;
+}
+
+.nes-balloon.is-dark.from-left::before {
+  box-shadow: -5px 10px 0 6px #1a1a1a;
+}
+.nes-balloon.is-dark.from-left::after {
+  box-shadow: -4px 0, 4px 0, -4px 4px #1a1a1a, 0 4px, -8px 4px, -4px 8px, -8px 8px;
+}
+
+.nes-balloon.is-dark.from-right::before {
+  box-shadow: 5px 10px 0 6px #1a1a1a;
+}
+.nes-balloon.is-dark.from-right::after {
+  box-shadow: -4px 0, 4px 0, 4px 4px #1a1a1a, 0 4px, 8px 4px, 4px 8px, 8px 8px;
+}
+
+.comment-container {
+  max-width: 1100px;
+  width: 100%;
+}
+.comment-container .comment-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.comment-container li {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.comment-container .nes-balloon {
+  width: 80%;
+}
+.comment-container .reply-content {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+}
+.comment-container .reply-content .user-info {
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+}
+.comment-container .reply-content .user-info .user-name {
+  font-size: 1.2rem;
+}
+.comment-container .reply-content .user-info .user-logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: 10px;
+}
+.comment-container .reply-content .user-info .comment-date {
+  color: #b1b1b1;
+  font-size: 0.7rem;
+}
+.comment-container .comment-edit {
+  padding: 0 10px 10px 10px;
+}
+.comment-container .comment-edit a {
+  font-family: "cute";
+}
+.comment-container .re-reply {
+  align-items: flex-end;
+}
+.comment-container .re-reply .reply-content {
+  justify-content: flex-end;
+}
+
+.guest {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.guest .guest-title {
+  font-family: "cute";
+}
+.guest div, .guest p {
+  background-color: #1a1a1a !important;
+}
+.guest form {
+  max-width: 1100px;
+  width: 100%;
+}
+.guest .guest-textarea {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 35px 0;
+}
+.guest .guest-textarea textarea {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  color: #fff;
+  resize: none;
+}
+.guest .guest-textarea .guest-form {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+.guest .guest-textarea .guest-form .guest-inputs {
+  display: flex;
+  align-items: flex-end;
+}
+.guest .guest-textarea .guest-form .guest-inputs input {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  color: #fff;
+  margin-right: 20px;
+}
+.guest .guest-textarea .guest-form .guest-secret {
+  display: flex;
+  align-items: flex-end;
+}
+.guest .guest-textarea .guest-form .guest-secret label {
+  margin-right: 20px;
+}
+
+/* guest end */
 /* 게시글 상세항목 start*/
 .item-detail .item-text {
   display: flex;
@@ -792,6 +931,7 @@ a:active {
   margin-top: -50px !important;
 }
 #aside .profile .nes-container {
+  width: 220px;
   min-height: 100px;
 }
 #aside .profile .nes-container img {
@@ -937,7 +1077,20 @@ a:active {
 
 @keyframes kirbyMoving {}
 /* aside end */
-@media only screen and (max-width: 1260px) {
+#footer {
+  height: 200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "cute";
+}
+#footer div {
+  margin-top: 20px;
+}
+
+@media only screen and (max-width: 1290px) {
   .sidebar-btn {
     display: flex !important;
   }
@@ -973,13 +1126,21 @@ a:active {
   }
 }
 @media screen and (max-width: 1024px) {
-  .related-img .thumbnail img {
-    width: 260px !important;
-    height: 200px !important;
+  .thumbnail img {
+    width: 240px !important;
+    height: 180px !important;
+  }
+
+  #article-list {
+    max-width: 780px !important;
   }
 
   .related-item {
-    width: 280px !important;
+    width: 260px !important;
+  }
+
+  .article {
+    width: 260px !important;
   }
 
   /* 사이드바 숨김 */
@@ -1021,31 +1182,6 @@ a:active {
     margin-right: 20px;
   }
 
-  #main-btn {
-    display: flex;
-    padding: 1em;
-    flex-direction: column;
-    align-items: center;
-    position: fixed;
-    bottom: 10px;
-    left: 10px;
-    z-index: 10;
-  }
-  #main-btn p {
-    font-size: 1.3vw;
-    font-family: "cute" !important;
-    color: #61dbfb;
-  }
-  #main-btn .nes-balloon {
-    padding: 0.5em 1em;
-  }
-  #main-btn .nes-balloon.from-right::before, #main-btn .nes-balloon.from-right::after {
-    right: 10vw;
-  }
-  #main-btn .nes-icon {
-    display: none;
-  }
-
   #blog-menu li {
     max-width: 80px !important;
     font-size: 15px;
@@ -1057,14 +1193,22 @@ a:active {
     font-size: 13px;
   }
 }
-@media screen and (max-width: 768px) {
-  .related-img .thumbnail img {
-    width: 200px !important;
-    height: 160px !important;
+@media screen and (max-width: 830px) {
+  .thumbnail img {
+    width: 210px !important;
+    height: 150px !important;
+  }
+
+  #article-list {
+    max-width: 690px !important;
   }
 
   .related-item {
-    width: 220px !important;
+    width: 230px !important;
+  }
+
+  .article {
+    width: 230px !important;
   }
 
   /* 사이드바 숨김 */
@@ -1120,23 +1264,27 @@ a:active {
     display: none;
   }
 }
+@media screen and (max-width: 760px) {
+  #article-list {
+    max-width: 460px !important;
+  }
+}
 @media screen and (max-width: 480px) {
   .thumbnail img {
-    width: 330px !important;
-    height: 290px !important;
+    width: 160px !important;
+    height: 130px !important;
   }
 
-  .article {
-    width: 350px !important;
-  }
-
-  .related-img .thumbnail img {
-    width: 180px !important;
-    height: 140px !important;
+  #article-list {
+    max-width: 360px !important;
   }
 
   .related-item {
-    width: 200px !important;
+    width: 180px !important;
+  }
+
+  .article {
+    width: 180px !important;
   }
 
   /* 사이드바 숨김 */
@@ -1176,13 +1324,6 @@ a:active {
   }
   #header .header-menu span {
     margin-right: 20px;
-  }
-
-  #main-btn .nes-balloon, #main-btn .nes-octocat {
-    display: none;
-  }
-  #main-btn .nes-icon {
-    display: flex;
   }
 
   #sticky-menu #search {

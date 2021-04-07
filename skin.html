@@ -1,497 +1,386 @@
-<html>
+<html lang="ko">
   <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
-    <meta
-      name="viewport"
-      content="width=device-width,height=device-height,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0"
-    />
-    <link rel="shortcut icon" href="[##_blog_link_##]favicon.ico" />
-    <link
-      rel="alternate"
-      type="application/rss+xml"
-      title="[##_title_##]"
-      href="[##_rss_url_##]"
-    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>[##_page_title_##]</title>
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js"></script>
+    <link href="https://unpkg.com/nes.css/css/nes.css" rel="stylesheet" />
     <link rel="stylesheet" href="./style.css" />
-    <link rel="stylesheet" href="./images/font.css" />
+    <script>
+      function shareKakaotalk() {
+        Kakao.Link.sendScrap({
+          requestUrl: location.href
+        });
+      };
+    </script>
+    <script>
+      //댓글
+      (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://testtistoryblog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <script>
+    window.onscroll = function() {myFunction()};
+    function myFunction() {
+      var winScroll = document.body.scrollTop;
+      var height = document.body.scrollHeight- document.body.clientHeight;
+      var scrolled = (winScroll / height) * 100;
+      document.getElementById("myBar").style.width = scrolled + "%";
+    }
+    </script>
+    <script>
+      window.onload = function () {
+      document.getElementById("loadingIndicator").style.opacity = "0";
+      setTimeout(function() {
+          document.getElementById("loadingIndicator").style.display = "none";}, 450);
+      }
+    </script>
+    <script>
+    //click effect
+      function clickEffect(e){
+        var d=document.createElement("div");
+        d.className="clickEffect";
+        d.style.top=e.clientY+"px";d.style.left=e.clientX+"px";
+        document.body.appendChild(d);
+        d.addEventListener('animationend',function(){d.parentElement.removeChild(d);}.bind(this));
+      }
+      document.addEventListener('click',clickEffect);
+    </script>
+    
   </head>
-  <body id="[##_body_id_##]">
+  <body id="[##_body_id_##]" > 
     <s_t3>
+      <div id="loadingIndicator" class="preloader">
+        <div id="loadingBar" class="loading-bar"></div>
+      </div>      
+      <div class="progress-bar">
+        <div class="progress" id="myBar"></div>
+      </div>
       <header id="header">
-        <h1>
-          <a href="[##_blog_link_##]">
-            <s_if_var_logo>
-              <img src="./images/yumyumtitle.png" alt="[##_title_##]" />
-            </s_if_var_logo>
-            <s_not_var_logo>Yum-Yum YUMMYCODING!</s_not_var_logo>
-          </a>
-        </h1>
-        <div class="profile">
-					<button type="button">[##_blog_image_##]</button>
-					<nav>
-						<ul>
-							<li><a href="[##_owner_url_##]">관리</a></li>
-							<li><a href="[##_owner_url_##]/entry/post ">글쓰기</a></li>
-							<li class="login"><a href="#">로그인</a></li>
-							<li class="logout"><a href="#">로그아웃</a></li>
-						</ul>
-					</nav>
-				</div>
-      </header>
-      <nav>
-        <ul>
-          <li><a href="[##_owner_url_##]">관리</a></li>
-          <li><a href="[##_owner_url_##]/entry/post ">글쓰기</a></li>
-          <li class="login"><a href="#">로그인</a></li>
-          <li class="logout"><a href="#">로그아웃</a></li>
-        </ul>
-      </nav>
-      <!-- header close -->
-
-      <section id="content">
-        <aside id="aside" class="sidebar">
-          <s_if_var_view-profile>
-            <div id="profile" class="box_aside">
-              <div class="inner">
-                <div class="blogger-profile">
-                  <div class="inner">
-                    <div
-                      class="thumb-profile<s_if_var_profile-img-size>[##_var_profile-img-size_##]</s_if_var_profile-img-size>"
-                    >
-                      <img
-                        src="[##_image_##]"
-                        class="img-profile"
-                        alt="프로필사진"
-                      />
-                    </div>
-                    <span class="txt-profile">[##_blogger_##]</span>
-                  </div>
-                </div>
-              </div>
+        <div class="header-menu" >
+          <label>
+            <input type="radio" class="nes-radio is-dark" name="answer-dark" checked />
+            <span><a href="[##_owner_url_##]">MANAGE</a></span>
+          </label>
+          <label>
+            <input type="radio" class="nes-radio is-dark" name="answer-dark"  />
+            <span><a href="[##_owner_url_##]/entry/post ">WRITE</a></span>
+          </label>
+          <label>
+            <input type="radio" class="nes-radio is-dark" name="answer-dark"  />
+            <span><a  href="https://www.tistory.com/login">LOGIN</a></span>
+          </label>
+          <label>
+            <input type="radio" class="nes-radio is-dark" name="answer-dark"  />
+            <span><a href="https://www.tistory.com/logout">LOGOUT</a></span>
+          </label> 
+        </div>
+        <a href="[##_blog_link_##]">
+            <div id="blog-title" class="glitch">
+            <span class="glitch__color glitch__color--red">yumyum
+yummy-coding!</span>
+              <span class="glitch__color glitch__color--blue">yumyum
+yummy-coding!</span>
+              <span class="glitch__color glitch__color--green">yumyum
+yummy-coding!</span>
+              <span class="glitch__main">yumyum
+yummy-coding!</span>
+              <span class="glitch__line glitch__line--first"></span>
+              <span class="glitch__line glitch__line--second"></span>
             </div>
-          </s_if_var_view-profile>
-
-          <div>
-            <s_sidebar>
-              <s_sidebar_element>
-                <!-- 검색 -->
-                <div class="search">
-                  <s_search>
-                    <input
-                      type="text"
-                      name="[##_search_name_##]"
-                      value="[##_search_text_##]"
-                      onkeypress="if (event.keyCode == 13) { [##_search_onclick_submit_##] }"
-                    />
-                    <input
-                      value="검색"
-                      type="button"
-                      onclick="[##_search_onclick_submit_##]"
-                      class="submit"
-                    />
-                  </s_search>
-                </div>
-              </s_sidebar_element>
-            </s_sidebar>
-            <s_sidebar>
-              <s_sidebar_element>
-                <!-- 카테고리 -->
-                <nav class="category">[##_category_list_##]</nav>
-              </s_sidebar_element>
-              <s_sidebar_element>
-                <!-- 공지사항 -->
-                <s_rct_notice>
-                  <div class="notice">
-                    <h2>공지사항</h2>
-                    <ul>
-                      <s_rct_notice_rep>
-                        <li>
-                          <a href="[##_notice_rep_link_##]"
-                            >[##_notice_rep_title_##]</a
-                          >
-                        </li>
-                      </s_rct_notice_rep>
-                    </ul>
-                  </div>
-                </s_rct_notice>
-              </s_sidebar_element>
-              <s_sidebar_element>
-                <!-- 최근글/인기글 -->
-                <div class="post-list tab-ui">
-                  <div id="recent" class="tab-list">
-                    <h2>최근글</h2>
-                    <ul>
-                      <s_rctps_rep>
-                        <li>
-                          <a href="[##_rctps_rep_link_##]">
-                            <s_rctps_rep_thumbnail>
-                              <img
-                                src="//i1.daumcdn.net/thumb/C58x58/?fname=[##_rctps_rep_thumbnail_##]"
-                                alt=""
-                              />
-                            </s_rctps_rep_thumbnail>
-                            <span class="title">[##_rctps_rep_title_##]</span>
-                            <span class="date"
-                              >[##_rctps_rep_simple_date_##]</span
-                            >
-                          </a>
-                        </li>
-                      </s_rctps_rep>
-                    </ul>
-                  </div>
-                  <div id="popular" class="tab-list">
-                    <h2>인기글</h2>
-                    <ul>
-                      <s_rctps_popular_rep>
-                        <li>
-                          <a href="[##_rctps_rep_link_##]">
-                            <s_rctps_rep_thumbnail>
-                              <img
-                                src="//i1.daumcdn.net/thumb/C58x58/?fname=[##_rctps_rep_thumbnail_##]"
-                                alt=""
-                              />
-                            </s_rctps_rep_thumbnail>
-                            <span class="title">[##_rctps_rep_title_##]</span>
-                            <span class="date"
-                              >[##_rctps_rep_simple_date_##]</span
-                            >
-                          </a>
-                        </li>
-                      </s_rctps_popular_rep>
-                    </ul>
-                  </div>
-                </div>
-              </s_sidebar_element>
-              <s_sidebar_element>
-                <!-- 최근댓글 -->
-                <div class="recent-comment">
-                  <h2>최근댓글</h2>
-                  <ul>
-                    <s_rctrp_rep>
-                      <li>
-                        <a href="[##_rctrp_rep_link_##]"
-                          >[##_rctrp_rep_desc_##]</a
-                        >
-                      </li>
-                    </s_rctrp_rep>
-                  </ul>
-                </div>
-              </s_sidebar_element>
-              <s_sidebar_element>
-                <!-- Facebook/Twitter -->
-                <div class="social-list tab-ui">
-                  <s_if_var_facebook-timeline>
-                    <div id="facebook" class="tab-list">
-                      <h2>Facebook</h2>
-                      <div id="fb-root"></div>
-                      <script>
-                        (function (d, s, id) {
-                          var js,
-                            fjs = d.getElementsByTagName(s)[0];
-                          if (d.getElementById(id)) return;
-                          js = d.createElement(s);
-                          js.id = id;
-                          js.src =
-                            "https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v3.2";
-                          fjs.parentNode.insertBefore(js, fjs);
-                        })(document, "script", "facebook-jssdk");
-                      </script>
-                      <div
-                        class="fb-page"
-                        data-href="[##_var_facebook-timeline_##]"
-                        data-tabs="timeline"
-                        data-width="230"
-                        data-height="400"
-                        data-small-header="true"
-                        data-adapt-container-width="true"
-                        data-hide-cover="true"
-                        data-show-facepile="false"
-                      ></div>
-                    </div>
-                  </s_if_var_facebook-timeline>
-                  <s_if_var_twitter-timeline>
-                    <div id="twitter" class="tab-list">
-                      <h2>Twitter</h2>
-                      <a
-                        class="twitter-timeline"
-                        data-width="230"
-                        data-height="400"
-                        href="[##_var_twitter-timeline_##]?ref_src=twsrc%5Etfw"
-                        >[##_var_twitter-timeline_##]</a
-                      >
-                      <script
-                        async
-                        src="https://platform.twitter.com/widgets.js"
-                        charset="utf-8"
-                      ></script>
-                    </div>
-                  </s_if_var_twitter-timeline>
-                </div>
-              </s_sidebar_element>
-              <s_sidebar_element>
-                <!-- 태그 -->
-                <div class="tags">
-                  <h2>태그</h2>
-                  <s_random_tags>
-                    <a href="[##_tag_link_##]">[##_tag_name_##]</a>
-                  </s_random_tags>
-                </div>
-              </s_sidebar_element>
-              <s_sidebar_element>
-                <!-- 소셜 채널 -->
-                <div class="social-channel">
-                  <ul>
-                    <s_if_var_facebook-link
-                      ><li class="facebook">
-                        <a href="[##_var_facebook-link_##]">페이스북</a>
-                      </li></s_if_var_facebook-link
-                    >
-                    <s_if_var_instagram-link
-                      ><li class="instagram">
-                        <a href="[##_var_instagram-link_##]">인스타그램</a>
-                      </li></s_if_var_instagram-link
-                    >
-                    <s_if_var_twitter-link
-                      ><li class="twitter">
-                        <a href="[##_var_twitter-link_##]">트위터</a>
-                      </li></s_if_var_twitter-link
-                    >
-                    <s_if_var_youtube-link
-                      ><li class="youtube">
-                        <a href="[##_var_youtube-link_##]">유투브</a>
-                      </li></s_if_var_youtube-link
-                    >
-                  </ul>
-                </div>
-              </s_sidebar_element>
-              <s_sidebar_element>
-                <!-- 달력 -->
-                <div class="box_aside">
-                  <div class="tit_aside">calendar</div>
-                  <div class="month_calendar">[##_calendar_##]</div>
-                </div>
-              </s_sidebar_element>
-              <s_sidebar_element>
-                <!-- 방문자수 -->
-                <div class="box_aside box_visitor">
-                  <div class="tit_aside">visits</div>
-                  <div class="list_visit">
-                    <dl class="list_total">
-                      <dd>[##_count_total_##]</dd>
-                    </dl>
-                    <dl class="list_visitor">
-                      <dt>Today</dt>
-                      <dd>[##_count_today_##]</dd>
-                    </dl>
-                    <dl class="list_visitor">
-                      <dt>Yesterday</dt>
-                      <dd>[##_count_yesterday_##]</dd>
-                    </dl>
-                  </div>
-                </div>
-              </s_sidebar_element>
-            </s_sidebar>
+        </a>
+      
+      </header>
+      <!-- sticky menu start-->
+       <div id="sticky-menu">
+          <div id="blog-menu">
+            [##_blog_menu_##]
           </div>
-        </aside>
-        <!-- side_bar close -->
+          <div class="right-side">
+            <div class="search-holder"></div>
+            <div class="sidebar-btn">
+              <i class="nes-icon is-medium heart"></i>
+            </div>
+          </div> 
+      </div>
+      <!-- sticky menu end -->
+    
 
+      <div class="up-btn">
+        <img src="./images/up_icon.svg" />
+      </div>
+
+
+      <section id="container">   
+        <!-- like -->
         <!-- content start -->
-        <div id="content" style="clearfix">
-          <!-- 게시물 리스트 -->
-          <div>
-            <s_list>
-              <div class="list_item">
-                <div class="list_text">
-                  <h2 class="list_tit">[##_list_conform_##]</h2>
-                  <div class="list_num">
-                    <span>검색결과</span>
-                    <em>[##_list_count_##]</em>
-                    <span>개</span>
+        <div id="content" >
+          <!-- 홈 커버 -->
+          <!--<s_cover_group>
+            <s_cover_rep>
+              <div></div>
+              <s_cover name='cover-thumbnail-list'>
+                <div class='cover-thumbnail-list'>
+                  <div class="inner">
+                    <h2>[##_cover_title_##]</h2>
+                    <ul>
+                      <s_cover_item>
+                        <li>
+                          <a href="[##_cover_item_url_##]">
+                            <span class="thum"><s_cover_item_thumbnail><img src="//i1.daumcdn.net/thumb/C264x200/?fname=[##_cover_item_thumbnail_##]" alt=""></s_cover_item_thumbnail></span>
+                            <s_cover_item_article_info>
+                              <span class="category">[##_cover_item_category_##]</span>
+                            </s_cover_item_article_info>
+                            <span class="title">[##_cover_item_title_##]</span>
+                          </a>
+                        </li>
+                      </s_cover_item>
+                    </ul>
                   </div>
                 </div>
-                <s_list_empty>
-                  <div class="not-found">
+              </s_cover>
+  
+              <s_cover name='cover-slider'>
+                <div class="cover-slider">
+                  <ul>
+                    <s_cover_item>
+                      <li<s_cover_item_thumbnail> style="background-image:url([##_cover_item_thumbnail_##]);"</s_cover_item_thumbnail>>
+                        <a href="[##_cover_item_url_##]" class="text-box">
+                            <s_cover_item_article_info>
+                              <span class="category">[##_cover_item_category_##]</span>
+                            </s_cover_item_article_info>
+                          <span class="title">[##_cover_item_title_##]</span>
+                          <span class="btn view">더보기</span>
+                        </a>
+                      </li>
+                    </s_cover_item>
+                  </ul>
+                </div>
+              </s_cover>
+  
+              <s_cover name='cover-masonry'>
+                <div class="cover-masonry">
+                  <div class="inner">
+                    <h2>[##_cover_title_##]</h2>
                     <ul>
-                      <li>입력하신 단어의 철자가 정확한지 확인해 보세요.</li>
-                      <li>검색어의 단어 수를 줄이거나, 보다 일반적인 단어로 검색해 보세요.</li>
-                      <li>두 단어 이상의 키워드로 검색 하신 경우, 정확하게 띄어쓰기를 한 후 검색해 보세요.</li>
-                    </ul>
-                    <ul class="tag">
-                      <li>선택하신 태그에 해당하는 글이 없습니다.</li>
-                      <li>다른 태그를 선택하시거나, 검색 기능을 활용해 보세요.</li>
-                    </ul>
-                    <ul class="category">
-                      <li>선택하신 카테고리에 해당하는 글이 없습니다.</li>
-                      <li>다른 카테고리를 선택하시거나, 검색 기능을 활용해 보세요.</li>
-                    </ul>
-                    <ul class="archive">
-                      <li>선택하신 기간에 등록된 글이 없습니다.</li>
+                      <s_cover_item>
+                        <li>
+                          <a href="[##_cover_item_url_##]">
+                            <span class="thum"><s_cover_item_thumbnail><img src="//i1.daumcdn.net/thumb/R600x0/?fname=[##_cover_item_thumbnail_##]" alt=""></s_cover_item_thumbnail></span>
+                            <s_cover_item_article_info>
+                              <span class="category">[##_cover_item_category_##]</span>
+                            </s_cover_item_article_info>
+                            <span class="title">[##_cover_item_title_##]</span>
+                            <span class="excerpt">[##_cover_item_summary_##]</span>
+                          </a>
+                        </li>
+                      </s_cover_item>
                     </ul>
                   </div>
-                </s_list_empty>
+                </div>
+              </s_cover>
+  
+              <s_cover name='cover-list'>
+                <div class="cover-list">
+                  <div class="inner">
+                    <h2>[##_cover_title_##]</h2>
+                    <ul>
+                      <s_cover_item>
+                        <li>
+                          <a href="[##_cover_item_url_##]">
+                            <figure>
+                              <s_cover_item_thumbnail><img src="//i1.daumcdn.net/thumb/C600x600/?fname=[##_cover_item_thumbnail_##]" alt=""></s_cover_item_thumbnail>
+                            </figure>
+                            <s_cover_item_article_info>
+                              <span class="category">[##_cover_item_category_##]</span>
+                            </s_cover_item_article_info>
+                            <span class="title">[##_cover_item_title_##]</span>
+                            <span class="excerpt">[##_cover_item_summary_##]</span>
+                          </a>
+                        </li>
+                      </s_cover_item>
+                    </ul>
+                  </div>
+                </div>
+              </s_cover>
+  
+              <s_cover name='cover-gallery'>
+                <div class="cover-gallery">
+                  <div class="inner">
+                    <h2>[##_cover_title_##]</h2>
+                    <ul>
+                      <s_cover_item>
+                        <li>
+                          <a href="[##_cover_item_url_##]">
+                            <figure>
+                            <s_cover_item_thumbnail><img src="//i1.daumcdn.net/thumb/C600x600/?fname=[##_cover_item_thumbnail_##]" alt=""></s_cover_item_thumbnail>
+                            </figure>
+                            <span class="title">[##_cover_item_title_##]</span>
+                          </a>
+                        </li>
+                      </s_cover_item>
+                    </ul>
+                  </div>
+                </div>
+              </s_cover>
+  
+            </s_cover_rep>
+  
+            <div class="cover-footer">
+              <s_if_var_footer-image>
+                <div class="image" style="background-image:url([##_var_footer-image_##]);"></div>
+              </s_if_var_footer-image>
+              <s_if_var_footer-text>
+                <p>[##_var_footer-text_##]</p>
+              </s_if_var_footer-text>
+              <div class="social-link">
+                <s_if_var_sns-pinterest><a href="[##_var_sns-pinterest_##]" class="pinterest"><span class="">Pinterest</span></a></s_if_var_sns-pinterest>
+                <s_if_var_sns-facebook><a href="[##_var_sns-facebook_##]" class="facebook">Facebook</a></s_if_var_sns-facebook>
+                <s_if_var_sns-twitter><a href="[##_var_sns-twitter_##]" class="twitter">Twitter</a></s_if_var_sns-twitter>
+                <s_if_var_sns-instagram><a href="[##_var_sns-instagram_##]" class="instagram">Instagram</a></s_if_var_sns-instagram>
               </div>
-            </s_list>
-          </div>
+              <nav class="menu">
+                [##_blog_menu_##]
+              </nav>
+            </div>
+          </s_cover_group> -->
+  
+          <!-- 게시물 리스트 -->
+        
+          <s_list>
+            <div class="list-item">
+              <div class="list-text">
+                <h2 class="list-tit">[##_list_conform_##]</h2>
+                <div class="list-num">
+                  <em>[##_list_count_##]</em>
+                  <span>ARTICLES</span>
+                </div>
+              </div>
+              <s_list_empty>
+                <div class="not-found">
+                  NO ARTICLES
+                </div>
+              </s_list_empty>
+            </div>
+          </s_list>
+        
           <!-- 게시물 상세항목 -->
+          <ul id="article-list">
           <s_article_rep>
             <s_index_article_rep>
               <!-- 텍스트 형식 항목-->
-              <div id="Textlist">
-                <div class="list_content_text">
-                  <div class="list_inner">
-                    <a href="[##_article_rep_link_##]" class="list_text_img">
-                      <s_article_rep_thumbnail>
-                        <img
-                          src="//i1.daumcdn.net/thumb/C400x400/?fname=[##_article_rep_thumbnail_raw_url_##]"
-                        />
-                      </s_article_rep_thumbnail>
-                      <img src="./images/no-image.jpg" />
-                    </a>
-                    <div class="left_text_post">
-                      <a href="[##_article_rep_link_##]" class="link_text_post">
-                        <strong class="link_tilt_post"
-                          >[##_article_rep_title_##]</strong
-                        >
-                        <p class="link_txt_post">[##_article_rep_summary_##]</p>
-                      </a>
-                      <div class="link_to_info">
-                        <a
-                          href="[##_article_rep_category_link_##]"
-                          class="link_link_cate"
-                          >[##_article_rep_category_##]</a
-                        >
-                        <span class="link_txt_bar"></span>
-                        <span class="link_txt_date"
-                          >[##_article_rep_date_##]</span
-                        >
-                      </div>
-                    </div>
-                  </div>
+                <div class="article">
+                  <a href="[##_article_rep_link_##]" class="thumbnail">
+                    <s_article_rep_thumbnail>
+                      <img
+                        src="//i1.daumcdn.net/thumb/C400x400/?fname=[##_article_rep_thumbnail_raw_url_##]"
+                      />
+                    </s_article_rep_thumbnail>
+                  </a>
+                  <a href="[##_article_rep_category_link_##]" class="article-category">
+                    <span>[##_article_rep_category_##]</span>
+                  </a>
+                  <a href="[##_article_rep_link_##]" class="article-text">
+                    <span class="article-title">[##_article_rep_title_##]</span>
+                    <span class="article-date">
+                      [##_article_rep_date_##]
+                    </span>
+                    <p class="article-summary">[##_article_rep_summary_##]</p>
+                  </a>
                 </div>
-              </div>
-            </s_index_article_rep>
+              </s_index_article_rep>
+            
 
             <s_permalink_article_rep>
-              <div class="item_detail">
+              <div class="item-detail">
                 <!-- 제목,날짜, -->
-                <div class="item_text">
-                  <h2 class="item_tit">
-                    <a href="[##_article_rep_link_##]"
-                      >[##_article_rep_title_##]</a
-                    >
-                    <div class="Cate" style="display: none">
-                      [##_article_rep_category_link_##]
+                <div class="item-text">
+                  <a href="[##_article_rep_category_link_##]">
+                    <div class="item-category">
+                      [##_article_rep_category_##]
                     </div>
-                    <span style="margin-left: 10px">
-                      <s_ad_div>
-                        <a href="[##_s_ad_m_link_##]">수정</a>
-                        <span>ㅣ</span>
-                        <a href="#" onclick="[##_s_ad_d_onclick_##]">삭제</a>
-                      </s_ad_div>
-                    </span>
-                  </h2>
+                  </a>
+                  <a href="[##_article_rep_link_##]">
+                    <h1 class="item-title">
+                      [##_article_rep_title_##]
+                    </h1>
+                  </a>                   
+                  <s_ad_div>
+                    <div>
+                      <a href="[##_s_ad_m_link_##]">EDIT</a>
+                      <span>ㅣ</span>
+                      <a href="#" onclick="[##_s_ad_d_onclick_##]">DELETE</a>
+                    </div>
+                  </s_ad_div>
                   <div class="item_day">[##_article_rep_date_##]</div>
                 </div>
                 <div>
                   <!-- 게시물 글영역 -->
-                  <div style="padding: 0 0 60px" class="article_main">
+                  <div class="article-main">
                     [##_article_rep_desc_##]
                   </div>
-                  <div style="margin-bottom: 60px" class="article_tag clearfix">
+                  <div class="tag_sns">
                     <!-- 태그 -->
-                    <s_tag_label>
-                      <dl class="detail_tag clearfix">
-                        <dt class="tag_tit">TAG</dt>
-                        <dd class="tag_item_list">
-                          <span class="tag_item">#[##_tag_label_rep_##]</span>
-                        </dd>
-                      </dl>
-                    </s_tag_label>
+                    <div class="article-tag">
+                      <div class="article-tag-tit">TAGS</div>
+                      <div class="article-tag-list">
+                      <s_tag_label>
+                        <span class="article-tag-item">[##_tag_label_rep_##]</span>
+                      </s_tag_label>
+                      </div>
+                    </div>
                     <!-- SNS공유 -->
-                    <div class="detail_sns">
-                      <a
-                        href="#"
-                        onclick="javascript:window.open('https://www.facebook.com/sharer/sharer.php?u=' +encodeURIComponent(document.URL)+'&t='+encodeURIComponent(document.title), 'facebooksharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
-                        target="_blank"
-                        alt="Share on Facebook"
-                      >
-                        <img src="./images/facebook_logo.jpg" />
-                      </a>
-                      <a
-                        href="#"
-                        onclick="javascript:window.open('https://twitter.com/intent/tweet?text=[%EA%B3%B5%EC%9C%A0]%20' +encodeURIComponent(document.URL)+'%20-%20'+encodeURIComponent(document.title), 'twittersharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
-                        target="_blank"
-                        alt="Share on Twitter"
-                      >
-                        <img src="./images/twitter_logo.jpg" />
-                      </a>
-                      <a
-                        href="#"
-                        onclick="javascript:window.open('https://story.kakao.com/s/share?url='+encodeURIComponent(document.URL), 'kakaostorysharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600');return false;"
-                        target="_blank"
-                        alt="Share on kakaostory"
-                      >
-                        <img src="./images/kaka_logo.jpg" />
-                      </a>
-                      <a
-                        href="#"
-                        onclick="javascript:window.open('http://share.naver.com/web/shareView.nhn?url=' +encodeURIComponent(document.URL)+'&title='+encodeURIComponent(document.title), 'naversharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"
-                        target="_blank"
-                        alt="Share on Naver"
-                      >
-                        <img src="./images/naver_logo.jpg" />
-                      </a>
+                    <div class="article-sns">
+                      <div class="article-sns-tit">SHARE ON SNS</div>
+                      <div class="detail_sns">
+                        <a href="#" onclick="javascript:window.open('https://www.facebook.com/sharer/sharer.php?u=' +encodeURIComponent(document.URL)+'&t='+encodeURIComponent(document.title), 'facebooksharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" alt="Share on Facebook">
+                          <i class="nes-icon facebook is-medium"></i>
+                        </a>
+                        <a href="#" onclick="javascript:window.open('https://twitter.com/intent/tweet?text=[%EA%B3%B5%EC%9C%A0]%20' +encodeURIComponent(document.URL)+'%20-%20'+encodeURIComponent(document.title), 'twittersharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" alt="Share on Twitter">
+                          <i class="nes-icon twitter is-medium"></i>
+                        </a>
+                        <a href="javascript:shareKakaotalk()" alt="Share on KaKaoTalk">
+                          <img class="nes-avatar is-medium" alt="Gravatar image example" src="./images/kakao.png" style="image-rendering: pixelated;">
+                        </a>
+                        <a href="http://share.naver.com/web/shareView.nhn?url=http://abc.tistory.com[##_article_rep_link_##]&title=[##_article_rep_title_##]" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no,width=600,height=600'); return false;" alt="Share on Naver">
+                          <img class="nes-avatar is-medium" alt="Gravatar image example" src="./images/naver.png" style="image-rendering: pixelated;">
+                        </a>
+                      </div>
                     </div>
                   </div>
                   <!-- 관련글 -->
                   <s_article_related>
-                    <div class="b_article">
+                    <div class="b-article">
                       <!-- 타이틀 -->
-                      <div class="b_article_text clearfix">
-                        <h3 class="b_article_tit">BELATED ARTICLES</h3>
-                        <a
-                          href="[##_article_rep_category_link_##]"
-                          class="b_article_more"
-                        >
-                          <span class="">more</span>
+                      <div class="b-article-text">
+                        <div class="b-article-tit">RELATED ARTICLES</div>
+                        <a href="[##_article_rep_category_link_##]" class="b-article-more">
+                          <span>more</span>
                         </a>
                       </div>
-                      <ul class="clearfix">
+                      <ul class="related-list">
                         <s_article_related_rep>
-                          <li class="[##_article_related_rep_type_##] clearfix">
+                          <li class="related-item">
                             <!-- 이미지 -->
-                            <a
-                              href="[##_article_related_rep_link_##]"
-                              class="link_related"
-                            >
+                            <a href="[##_article_related_rep_link_##]"  class="related-img">
+                              <div class="thumbnail">
                               <s_article_related_rep_thumbnail>
-                                <span class="thumb_related">
                                   <img
                                     src="//i1.daumcdn.net/thumb/C500x500/?fname=[##_article_related_rep_thumbnail_link_##]"
-                                    class="img_related"
-                                    alt=""
+                                    alt="관련글"
                                   />
-                                </span>
                               </s_article_related_rep_thumbnail>
-                              <img src="./images/no-image.jpg" />
+                              </div>
                             </a>
                             <!-- 텍스트 -->
-                            <a
-                              href="[##_article_related_rep_link_##]"
-                              class="names"
-                            >
-                              <span class="names_line">
-                                <span class="names_in">
-                                  <span class="txt_related">
-                                    [##_article_related_rep_title_##]</span
-                                  >
-                                  <em class="date_related"
-                                    >[##_article_related_rep_date_##]</em
-                                  >
-                                  <span class="frame_related"></span>
-                                </span>
+                            <a href="[##_article_related_rep_link_##]" class="related-info">
+                              <span class="related-date">[##_article_related_rep_date_##]</span>
+                              <span class="related-text">
+                                [##_article_related_rep_title_##]
                               </span>
                             </a>
                           </li>
@@ -499,285 +388,119 @@
                       </ul>
                     </div>
                   </s_article_related>
-                  <s_rp>
-                    <div id="communicate">
-                      <s_rp_container>
-                        <h3 class="com_tit">COMMENT</h3>
-                        <div class="com_list">
-                          <ul class="list_reply">
-                            <s_rp_rep>
-                              <li
-                                id="[##_rp_rep_id_##]"
-                                class="[##_rp_rep_class_##]"
-                              >
-                                <span class="reply_content">
-                                  <span class="tit_nickname"
-                                    >[##_rp_rep_name_##]
-                                    <span class="ico_skin ico_secret"></span>
-                                  </span>
-                                  <span class="txt_date"
-                                    >[##_rp_rep_date_##]</span
-                                  >
-                                  <span class="txt_reply"
-                                    >[##_rp_rep_desc_##]</span
-                                  >
-                                </span>
-                                <button type="button" class="btn_replymenu">
-                                  <span class="ico_skin ico_replymenu"
-                                    >댓글 메뉴</span
-                                  >
-                                </button>
-                                <div class="my_edit">
-                                  <a
-                                    href="#"
-                                    onclick="[##_rp_rep_onclick_delete_##]"
-                                    class="link_edit"
-                                    >수정/삭제</a
-                                  >
-                                  <a
-                                    href="#"
-                                    onclick="[##_rp_rep_onclick_reply_##]"
-                                    class="link_edit"
-                                    >댓글쓰기</a
-                                  >
-                                </div>
-                              </li>
-                              <s_rp2_container>
-                                <s_rp2_rep>
-                                  <li
-                                    id="[##_rp_rep_id_##]"
-                                    class="re_reply [##_rp_rep_class_##]"
-                                  >
-                                    <span class="reply_content">
-                                      <span class="tit_nickname"
-                                        >[##_rp_rep_name_##]
-                                        <span
-                                          class="ico_skin ico_secret"
-                                        ></span>
-                                      </span>
-                                      <span class="txt_date"
-                                        >[##_rp_rep_date_##]</span
-                                      >
-                                      <span class="txt_reply"
-                                        >[##_rp_rep_desc_##]</span
-                                      >
-                                    </span>
-                                    <button type="button" class="btn_replymenu">
-                                      <span class="ico_skin ico_replymenu"
-                                        >댓글 메뉴</span
-                                      >
-                                    </button>
-                                    <div class="my_edit">
-                                      <a
-                                        href="#"
-                                        onclick="[##_rp_rep_onclick_delete_##]"
-                                        class="link_edit"
-                                        >수정/삭제</a
-                                      >
-                                    </div>
-                                  </li>
-                                </s_rp2_rep>
-                              </s_rp2_container>
-                            </s_rp_rep>
-                          </ul>
-                        </div>
-                      </s_rp_container>
-                      <s_rp_input_form>
-                        <div class="com_write clearfix">
-                          <s_rp_member>
-                            <s_rp_guest>
-                              <div class="name guest first">
-                                <input
-                                  placeholder="이름을 입력해주세요."
-                                  id="[##_rp_input_name_##]"
-                                  type="text"
-                                  name="[##_rp_input_name_##]"
-                                  value="[##_guest_name_##]"
-                                />
-                              </div>
-                              <div class="password guest">
-                                <input
-                                  placeholder="비밀번호을 입력해주세요."
-                                  id="[##_rp_input_password_##]"
-                                  type="password"
-                                  maxlength="8"
-                                  name="[##_rp_input_password_##]"
-                                  value="[##_rp_admin_check_##]"
-                                />
-                              </div>
-                            </s_rp_guest>
-                          </s_rp_member>
-                          <div class="clearfix">
-                            <textarea
-                              width="100%"
-                              placeholder="내용을 입력해주세요."
-                              name="[##_rp_input_comment_##]"
-                              rows="5"
-                              cols="50"
-                            ></textarea>
-                          </div>
-                          <div class="clearfix">
-                            <div class="secret">
-                              <input
-                                id="secret"
-                                type="checkbox"
-                                name="[##_rp_input_is_secret_##]"
-                                class="ch_box"
-                              />
-                              <label for="secret" class="se_label">
-                                <span>비공개</span>
-                                <svg class="svg-icon" viewBox="0 -3.2 9.5 22">
-                                  <path
-                                    d="M1.7,4.4V3.3C1.7,1.5,3.2,0,5,0c1.8,0,3.3,1.5,3.3,3.3v1.1H7.2V3.3c0-1.2-1-2.2-2.2-2.2s-2.2,1-2.2,2.2v1.1H1.7z M10,5.6v7.8H0V5.6H10z M8.9,6.7H1.1v5.6h7.8V6.7z"
-                                  ></path>
-                                </svg>
-                              </label>
-                            </div>
-                            <div class="submit">
-                              <input
-                                type="submit"
-                                value="댓글남기기"
-                                onclick="[##_rp_onclick_submit_##]"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      </s_rp_input_form>
-                    </div>
-                  </s_rp>
+                  <div id="disqus_thread"></div>
                 </div>
               </div>
             </s_permalink_article_rep>
           </s_article_rep>
+          </ul>
           <!-- 방명록  -->
           <s_guest>
-            <div class="guest_warp">
-              <h3 class="guest_warp_tit">방명록</h3>
+            <div class="guest">
+              <div class="guest-title">
+                <h1>WELCOME TO MY BLOG!</h1>
+                <h2>plz leave comment below 👇🏻👇🏻👇🏻</h2>
+              </div>
               <s_guest_input_form>
-                <div class="com_write clearfix">
-                  <s_guest_member>
-                    <s_guest_form>
-                      <div class="name guest first">
-                        <input
-                          placeholder="이름을 입력해주세요."
-                          id="[##_guest_input_name_##]"
-                          type="text"
-                          name="[##_guest_input_name_##]"
-                          value="[##_guest_name_##]"
-                        />
-                      </div>
-                      <div class="password guest">
-                        <input
-                          placeholder="비밀번호을 입력해주세요."
-                          id="[##_guest_input_password_##]"
-                          type="password"
-                          maxlength="8"
-                          name="[##_guest_input_password_##]"
-                          value="[##_guest_admin_check_##]"
-                        />
-                      </div>
-                    </s_guest_form>
-                  </s_guest_member>
-                  <div class="clearfix">
-                    <textarea
-                      width="100%"
-                      placeholder="내용을 입력해주세요."
-                      name="[##_guest_input_comment_##]"
-                      rows="5"
-                      cols="50"
-                    ></textarea>
-                  </div>
-                  <div class="clearfix">
-                    <div class="secret">
-                      <input
-                        id="secret"
-                        type="checkbox"
-                        name="[##_guest_input_is_secret_##]"
-                        class="ch_box"
-                      />
-                      <label for="secret" class="se_label">
-                        <span>비공개</span>
-                        <svg class="svg-icon" viewBox="0 -3.2 9 22">
-                          <path
-                            d="M1.7,4.4V3.3C1.7,1.5,3.2,0,5,0c1.8,0,3.3,1.5,3.3,3.3v1.1H7.2V3.3c0-1.2-1-2.2-2.2-2.2s-2.2,1-2.2,2.2v1.1H1.7z M10,5.6v7.8H0V5.6H10z M8.9,6.7H1.1v5.6h7.8V6.7z"
-                          ></path>
-                        </svg>
-                      </label>
+                <div class="guest-textarea nes-container is-rounded is-dark">
+                  <textarea
+                  placeholder="내용을 입력해주세요..."
+                  name="[##_guest_input_comment_##]"
+                  rows="5"></textarea>
+                  <div class="guest-form">
+                    <div class="guest-inputs">
+                      <s_guest_member>
+                        <s_guest_form>
+                          <div class="guest-name-input">
+                            <input
+                              placeholder="이름을 입력해주세요.."
+                              id="[##_guest_input_name_##]"
+                              type="text"
+                              name="[##_guest_input_name_##]"
+                              value="[##_guest_name_##]"
+                            />
+                          </div>
+                          <div class="guest-password-input">
+                            <input
+                              placeholder="비밀번호을 입력해주세요.."
+                              id="[##_guest_input_password_##]"
+                              type="password"
+                              maxlength="8"
+                              name="[##_guest_input_password_##]"
+                              value="[##_guest_admin_check_##]"
+                            />
+                          </div>
+                        </s_guest_form>
+                      </s_guest_member>
                     </div>
-                    <div class="submit">
-                      <input
-                        type="submit"
-                        value="댓글남기기"
-                        onclick="[##_guest_onclick_submit_##]"
-                      />
+                    <div class="guest-secret">
+                      <label>
+                        <input
+                          id="secret"
+                          type="checkbox"
+                          class="nes-checkbox is-dark"
+                          name="[##_guest_input_is_secret_##]"/>
+                        <span>비공개</span>
+                      </label>
+                      <div class="submit">
+                        <button type="submit" value="댓글남기기" onclick="[##_guest_onclick_submit_##]" class="nes-btn">COMMENT</button>
+                      </div>
                     </div>
                   </div>
                 </div>
               </s_guest_input_form>
               <s_guest_container>
-                <div class="com_list">
-                  <ul class="list_reply">
+                <div class="comment-container">
+                  <ul class="comment-list">
                     <s_guest_rep>
-                      <li
-                        id="[##_guest_rep_id_##]"
-                        class="[##_guest_rep_class_##]"
-                      >
-                        <span class="reply_content">
-                          <span class="tit_nickname"
-                            >[##_guest_rep_name_##]
-                            <span class="ico_skin ico_secret"></span>
-                          </span>
-                          <span class="txt_date">[##_guest_rep_date_##]</span>
-                          <span class="txt_reply">[##_guest_rep_desc_##]</span>
-                        </span>
-                        <button type="button" class="btn_replymenu">
-                          <span class="ico_skin ico_replymenu">댓글 메뉴</span>
-                        </button>
-                        <div class="my_edit">
-                          <a
-                            href="#"
+                      <li id="[##_guest_rep_id_##]"
+                        class="[##_guest_rep_class_##]">
+                        <div class="reply-content">
+                          <div class="user-info">
+                            <div class="user-logo" style="background-image: url('[##_guest_rep_logo_##]')"></div>
+                            <div class="user-name">
+                              [##_guest_rep_name_##]
+                              <span class="ico_skin ico_secret"></span>
+                            </div>
+                            <span class="comment-date">[##_guest_rep_date_##]</span>
+                          </div>
+                          <div class="nes-balloon from-left is-dark">[##_guest_rep_desc_##]</div>
+                        </div>
+                       
+                        <div class="comment-edit">
+                          <a href="#"
                             onclick="[##_guest_rep_onclick_delete_##]"
-                            class="link_edit"
-                            >수정/삭제</a
-                          >
-                          <a
-                            href="#"
+                            class="link_edit">
+                            modify | delete
+                          </a>
+                          <a href="#"
                             onclick="[##_guest_rep_onclick_reply_##]"
-                            class="link_edit"
-                            >댓글쓰기</a
-                          >
+                            class="link_edit">
+                            comment
+                          </a>
                         </div>
                       </li>
                       <s_guest_reply_container>
                         <s_guest_reply_rep>
-                          <li
-                            id="[##_guest_rep_id_##]"
-                            class="re_reply [##_guest_rep_class_##]"
-                          >
-                            <span class="reply_content">
-                              <span class="tit_nickname"
-                                >[##_guest_rep_name_##]
-                                <span class="ico_skin ico_secret"></span>
-                              </span>
-                              <span class="txt_date"
-                                >[##_guest_rep_date_##]</span
-                              >
-                              <span class="txt_reply"
-                                >[##_guest_rep_desc_##]</span
-                              >
-                            </span>
-                            <button type="button" class="btn_replymenu">
-                              <span class="ico_skin ico_replymenu"
-                                >댓글 메뉴</span
-                              >
-                            </button>
-                            <div class="my_edit">
-                              <a
-                                href="#"
+                          <li id="[##_guest_rep_id_##]"
+                            class="re-reply [##_guest_rep_class_##]">
+                            <div class="reply-content">
+                              <div class="nes-balloon from-right is-dark">[##_guest_rep_desc_##]</div>
+                              <div class="user-info">
+                                <div class="user-logo" style="background-image: url('[##_guest_rep_logo_##]')" ></div>
+                                <div class="user-name">
+                                  [##_guest_rep_name_##]
+                                  <span class="ico_skin ico_secret"></span>
+                                </div>
+                                <span class="comment-date">[##_guest_rep_date_##]</span>
+                              </div>
+                            </div>
+                            <div class="comment-edit">
+                              <a href="#"
                                 onclick="[##_guest_rep_onclick_delete_##]"
-                                class="link_edit"
-                                >수정/삭제</a
-                              >
+                                class="link_edit">
+                                modify | delete
+                              </a>
                             </div>
                           </li>
                         </s_guest_reply_rep>
@@ -788,22 +511,26 @@
               </s_guest_container>
             </div>
           </s_guest>
-          <!-- 보호모드 -->
+          <!--  보호모드 -->
           <s_article_protected>
             <s_index_article_rep>
-              <div class="post-item protected">
-                  <a href="[##_article_rep_link_##]">
-                    <span class="thum"></span>
-                    <span class="title">[##_article_rep_title_##]</span>
-                    <span class="excerpt">보호되어 있는 글 입니다.</span>
-                  <span class="meta">
-                      <span class="date">[##_article_rep_simple_date_##]</span>
+              <div class="article">
+                  <a href="[##_article_rep_link_##]" class="thumbnail">
+                  </a>
+                  <a href="[##_article_rep_category_link_##]" class="article-category">
+                    <span>[##_article_rep_category_##]</span>
+                  </a>
+                  <a href="[##_article_rep_link_##]" class="article-text">
+                    <span class="article-title">[##_article_rep_title_##]</span>
+                    <span class="article-date">
+                      [##_article_rep_date_##]
                     </span>
+                    <p class="article-summary">보호되어 있는 글입니다. </p>
                   </a>
                 </div>
             </s_index_article_rep>
             <s_permalink_article_rep>
-              <div class="entry-content">
+              <div class="item-detail">
                 <form
                   class="protected_form"
                   onsubmit="{reloadEntry(14);return false;}"
@@ -817,7 +544,7 @@
                     value=""
                     placeholder="비밀번호"
                   />
-                  <button type="submit" class="btn">확인</button>
+                  <button type="submit" class="nes-btn">SUBMIT</button>
                 </form>
               </div>
             </s_permalink_article_rep>
@@ -836,75 +563,330 @@
               [##_notice_rep_desc_##]
             </div>
           </s_notice_rep>
-          <!-- 태그 -->
-          <s_tag>
-            <div class="post-header">
-              <h1>태그</h1>
-            </div>
-            <div class="tags">
-              <s_tag_rep>
-                <a href="[##_tag_link_##]">[##_tag_name_##]</a>
-              </s_tag_rep>
-            </div>
-          </s_tag>
           <!-- 앞,뒤 이동 버튼-->
-          <div class="paging clearfix">
+          <div class="paging">
             <s_paging>
               <a [##_prev_page_##] class="prev [##_no_more_prev_##]">
-                <span>PREV</span>
+                <span>◀ PREV</span>
               </a>
-              <s_paging_rep>
-                <a [##_paging_rep_link_##]>[##_paging_rep_link_num_##]</a>
-              </s_paging_rep>
+              <div>
+                <s_paging_rep>
+                  <a [##_paging_rep_link_##]>[##_paging_rep_link_num_##]</a>
+                </s_paging_rep>
+              </div>
               <a [##_next_page_##] class="next [##_no_more_next_##]">
-                <span>NEXT</span>
+                <span>NEXT ▶</span>
               </a>
             </s_paging>
           </div>
         </div>
         <!-- content close -->
-      </section>
-
-      <footer id="footer">
-        <div class="inner">
-          <div class="order-menu">
-            <s_if_var_order-link-1-title>
-              <a href="[##_var_order-link-1-url_##]"
-                >[##_var_order-link-1-title_##]</a
-              >
-            </s_if_var_order-link-1-title>
-            <s_if_var_order-link-2-title>
-              <a href="[##_var_order-link-2-url_##]"
-                >[##_var_order-link-2-title_##]</a
-              >
-            </s_if_var_order-link-2-title>
-            <s_if_var_order-link-3-title>
-              <a href="[##_var_order-link-3-url_##]"
-                >[##_var_order-link-3-title_##]</a
-              >
-            </s_if_var_order-link-3-title>
-            <s_if_var_order-link-4-title>
-              <a href="[##_var_order-link-4-url_##]"
-                >[##_var_order-link-4-title_##]</a
-              >
-            </s_if_var_order-link-4-title>
+        <!-- aside start -->
+        <div class="aside-mask"></div>
+        <aside id="aside">
+          <div id="aside-close-btn">
+            <i class="nes-icon close is-medium" ></i>
           </div>
-          <a href="#" class="page-top">TOP</a>
-          <p class="meta">
-            <s_if_var_footer-text-1
-              >[##_var_footer-text-1_##]</s_if_var_footer-text-1
-            >
-          </p>
-          <p class="copyright">
-            <s_if_var_footer-text-2
-              >[##_var_footer-text-2_##]</s_if_var_footer-text-2
-            >
-          </p>
-        </div>
-      </footer>
-      <!-- footer close -->
-    </s_t3>
-    <!-- s_t3 close -->
-    <script src="./images/script.js"></script>
-  </body>
+            <div class="profile">
+                <div class="nes-container is-rounded is-dark is-centered with-title" >
+                  <div class="title">[##_blog_image_##]</div>
+                  <div id="blogger">[##_blogger_##]</div>
+                  <div id="desc">[##_desc_##]</div>
+                </div>
+            </div>
+          <div id="category">
+           [##_category_list_##]
+          </div>
+          <div id="sidebar-box">
+            <s_sidebar>
+              <s_sidebar_element>
+                <!-- 공지사항 -->
+                <s_rct_notice>
+                  <div id="notice" class="nes-container is-rounded is-dark with-title" >
+                    <p class="title" >NOTICE</p>
+                    <ul>
+                      <s_rct_notice_rep>
+                        <li>
+                          <a href="[##_notice_rep_link_##]"
+                            >[##_notice_rep_title_##]</a>
+                        </li>
+                      </s_rct_notice_rep>
+                    </ul>
+                  </div>
+                </s_rct_notice>
+              </s_sidebar_element>
+              <s_sidebar_element>
+                <!-- 최근글/인기글 -->
+                  <div id="recent" class="nes-container is-rounded is-dark with-title">
+                    <p  class="title">RECENT</p>
+                    <ul>
+                      <s_rctps_rep>
+                        <li>
+                          <a href="[##_rctps_rep_link_##]">
+                            <span class="rep-title">[##_rctps_rep_title_##]</span>
+                            <span class="date">[##_rctps_rep_simple_date_##]</span>
+                          </a>
+                        </li>
+                      </s_rctps_rep>
+                    </ul>
+                  </div>
+                  <div id="popular"  class="nes-container  is-rounded is-dark with-title">
+                    <p class="title">POPULAR</p>
+                    <ul>
+                      <s_rctps_popular_rep>
+                        <li>
+                          <a href="[##_rctps_rep_link_##]">
+                            <span class="rep-title">[##_rctps_rep_title_##]</span>
+                            <span class="date">[##_rctps_rep_simple_date_##]</span>
+                          </a>
+                        </li>
+                      </s_rctps_popular_rep>
+                    </ul>
+                  </div>
+              </s_sidebar_element>
+            
+              </s_sidebar_element>
+              <s_sidebar_element>
+                <!-- 최근댓글 -->
+                <div id="recent-comment" class="nes-container  is-rounded is-dark with-title">
+                  <p  class="title">COMMENTS</p>
+                  <ul>
+                    <s_rctrp_rep>
+                      <li>
+                        <a href="[##_rctrp_rep_link_##]"
+                          >[##_rctrp_rep_desc_##]</a
+                        >
+                      </li>
+                    </s_rctrp_rep>
+                  </ul>
+                </div>
+              </s_sidebar_element>
+              <s_sidebar_element>
+                <!-- 태그 -->
+                <div class="nes-container  is-rounded is-dark with-title">
+                  <p class="title">TAGS</p>
+                  <div id="tags">
+                  <s_random_tags>
+                    <a href="[##_tag_link_##]">[##_tag_name_##]</a>
+                  </s_random_tags>
+                  </div>
+                </div>
+              </s_sidebar_element>
+              <s_sidebar_element>
+                <s_search id="search">
+                  <form onsubmit="[##_search_onclick_submit_##]">
+                  <input
+                    class="search-input nes-input is-dark"
+                    placeholder="SEARCH.."
+                    type="text" name="[##_search_name_##]" value="[##_search_text_##]" onkeypress="if (event.keyCode == 13) { [##_search_onclick_submit_##] console.log([##_search_text_##]); }"
+                  />
+                  <button type="submit" class="nes-btn">SEARCH</div>
+                  </form>
+                </s_search>
+              <s_sidebar_element>
+              <s_sidebar_element>
+                <!-- 소셜 채널 -->
+                <div class="social-channel">
+                  <div class="social-channel-title"> 
+                    <i class="nes-icon is-medium heart"></i>
+                    <span>WANNA GET IN TOUCH WITH ME?</span>
+                    <i class="nes-icon is-medium heart"></i>
+                  </div> 
+                    <div class="social-channel-content">
+                      <s_if_var_gmail-link>
+                        <div class="gmail">
+                          <a href="[##_var_gmail-link_##]">
+                            <i class="nes-icon gmail is-medium"></i>
+                          </a>
+                        </div>
+                      </s_if_var_gmail-link>
+                      <s_if_var_github-link>
+                        <div class="github">
+                          <a href="[##_var_github-link_##]">
+                            <i class="nes-icon github is-medium"></i>
+                          </a>
+                        </div>
+                      </s_if_var_github-link>
+                      <s_if_var_instagram-link>
+                        <div class="instagram">
+                          <a href="[##_var_instagram-link_##]">  
+                            <i class="nes-icon instagram is-medium"></i>
+                          </a>
+                        </div>
+                      </s_if_var_instagram-link>
+                      <s_if_var_facebook-link>
+                        <div class="facebook">
+                          <a href="[##_var_facebook-link_##]"> 
+                            <i class="nes-icon facebook is-medium"></i>
+                          </a>
+                        </div>
+                      </s_if_var_facebook-link>
+                      <s_if_var_youtube-link>
+                        <div class="youtube">
+                          <a href="[##_var_youtube-link_##]"><i class="nes-icon youtube is-medium"></i></a>
+                        </div>
+                      </s_if_var_youtube-link>
+                      <s_if_var_linkedin-link>
+                        <div class="linkedin">
+                          <a href="[##_var_linkedin-link_##]">
+                            <i class="nes-icon linkedin is-medium"></i>
+                          </a>
+                        </div>
+                      </s_if_var_linkedin-link>
+                    </div>
+                </div>
+              </s_sidebar_element>
+
+               <s_sidebar_element>
+                <!-- 달력 -->
+                <div class="calendar">
+                  <div class="month_calendar">[##_calendar_##]</div>
+                </div>
+              </s_sidebar_element>
+              <s_sidebar_element>
+                <!-- 방문자수 -->
+                <div class="visitor">
+                  <div class="kirby-talking">
+                    <span class="nes-balloon from-right">Thank u for visiting my BLOGGG!💕</span>
+                  </div>
+                  <i class="nes-kirby"></i>
+                  <div class="list-visit">
+                    <dl class="list-visitor">
+                      <i class="nes-icon is-medium star"></i>
+                      <div class="list-visitor-title"><dt>Total</dt>
+                      <dd class="list-visitor-count">
+                        [##_count_total_##]
+                      </dd></div>
+                      <i class="nes-icon is-medium star"></i>
+                    </dl>
+                    <dl class="list-visitor">
+                      <i class="nes-icon is-medium star"></i>
+                      <div class="list-visitor-title"><dt>Today</dt>
+                      <dd class="list-visitor-count">[##_count_today_##]</dd></div>
+                      <i class="nes-icon is-medium star"></i>
+                    </dl>
+                    <dl class="list-visitor">
+                      <i class="nes-icon is-medium star"></i>
+                      <div class="list-visitor-title"><dt>Yesterday</dt>
+                      <dd class="list-visitor-count">[##_count_yesterday_##]</dd></div>
+                      <i class="nes-icon is-medium star"></i>
+                    </dl>
+                  </div>
+                </div>
+              </s_sidebar_element>
+            </s_sidebar>
+          </div>
+        </aside>
+        <!-- aside close -->
+    </section>
+    <footer id="footer">
+      <i class="nes-octocat animate"></i>
+      <div>
+        <span>CREATED BY</span>
+        <span>YUMYUMNYANG</span>
+      </div>
+    </footer>
+    <script>
+        (function() {
+          window.addEventListener('load', function() {
+            var el = document.querySelector('#search').cloneNode(true);
+            el.querySelector('.search-input').setAttribute('name', 'header-search');
+            document.querySelector('.right-side .search-holder').appendChild(el);
+            document.querySelector('.right-side .search-holder form').addEventListener('submit', function(e) {
+              e.preventDefault();
+              window.location.href = '/search/' + looseURIEncode(document.getElementsByName('header-search')[0].value);
+            });
+          });
+        })();
+    </script>
+    <script>
+      (function() {
+        window.addEventListener('load', function() {
+          var sub = document.querySelector('.menu_toolbar .btn_subscription');
+          var star = '<i class="nes-icon is-large star "></i>';
+          var emptystar = '<i class="nes-icon is-large star is-empty"></i>';
+          if(sub.classList.contains("following")){
+            sub.innerHTML +=star;
+          }else{
+            sub.innerHTML +=emptystar;
+          }
+         
+        });
+      })();
+    </script>
+    <script>
+      (function() {
+        window.addEventListener('load', function() {
+          document.querySelector(".menu_toolbar .btn_subscription").addEventListener('click', function() {
+          var el = document.querySelector(".menu_toolbar .btn_subscription");
+          var icon = document.querySelector(".menu_toolbar .btn_subscription i");
+          if(el.classList.contains("following")){
+            icon.classList.add("is-empty")
+          }else{
+            icon.classList.remove("is-empty")
+          }
+        });
+        });
+      })();
+    </script>
+    <script>
+      (function() {
+        window.addEventListener('load', function() {
+          document.querySelector(".up-btn").addEventListener('click', function() {
+            window.scrollTo({
+              top: 0,
+              left: 0,
+              behavior: 'smooth'
+            });
+          });
+        });
+      })();
+    </script>
+    <script>
+      (function() {
+        window.addEventListener('load', function() {
+          var categories = document.querySelectorAll("#category a");
+          [...categories].forEach(cate => 
+              cate.addEventListener('click', function() {document.querySelector(".not-found .category").style.display = "flex";}));
+        });
+      })();
+    </script>
+    <script>
+     (function() {
+        window.addEventListener('load', function() {
+          var images = document.querySelectorAll(".thumbnail");
+          [...images].forEach(image => {
+            var isImg = image.getElementsByTagName('img');
+            if(isImg.length == 0){
+              image.innerHTML += '<img src="./images/umbrella.gif" />';
+            }
+          });
+        });
+      })();
+    </script>
+    <script>
+      (function() {
+        window.addEventListener('load', function() {
+          document.querySelector(".sidebar-btn").addEventListener('click', function() {
+          var sidebar = document.querySelector("#aside");
+          document.querySelector(".aside-mask").style.display="flex";
+          sidebar.classList.add("open");
+        });
+        });
+      })();
+    </script>
+       <script>
+      (function() {
+        window.addEventListener('load', function() {
+          document.querySelector("#aside-close-btn").addEventListener('click', function() {
+          var sidebar = document.querySelector("#aside");
+          document.querySelector(".aside-mask").style.display="none";
+          sidebar.classList.remove("open");
+        });
+        });
+      })();
+    </script>
+   </s_t3>
+   </body>
 </html>
+
