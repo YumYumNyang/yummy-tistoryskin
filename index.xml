@@ -30,7 +30,7 @@
     <lengthOfRecentTrackback>30</lengthOfRecentTrackback>
     <lengthOfLink>30</lengthOfLink>
     <showListOnCategory>2</showListOnCategory>
-    <showListOnArchive>1</showListOnArchive>
+    <showListOnArchive>2</showListOnArchive>
     <commentMessage>
       <none>댓글이 없습니다.</none>
       <single>댓글 &lt;span class="cnt"&gt;하나&lt;/span&gt; 달렸습니다.</single>
@@ -43,5 +43,53 @@
       <labelLength>27</labelLength>
       <showValue>1</showValue>
     </tree>
+    <contentWidth>1100</contentWidth>
   </default>
+    <variables>
+  <variablegroup>
+   <variable>
+      <name>gmail-link</name>
+      <label>지메일</label>
+      <description></description>
+      <type>STRING</type>
+      <default>mailto:khw121699@gmail.com</default>
+    </variable>   
+   <variable>
+      <name>github-link</name>
+      <label>깃헙</label>
+      <description></description>
+      <type>STRING</type>
+      <default>https://github.com/YumYumNyang</default>
+    </variable>   
+   <variable>
+      <name>instagram-link</name>
+      <label>인스타</label>
+      <description></description>
+      <type>STRING</type>
+      <default>https://www.instagram.com/theonlyone_hye1/</default>
+    </variable>   
+   <variable>
+      <name>facebook-link</name>
+      <label>페이스북</label>
+      <description></description>
+      <type>STRING</type>
+      <default></default>
+    </variable>   
+   <variable>
+      <name>youtube-link</name>
+      <label>유튜브</label>
+      <description></description>
+      <type>STRING</type>
+      <default></default>
+    </variable>   
+   <variable>
+      <name>linkedin-link</name>
+      <label>링크드인</label>
+      <description></description>
+      <type>STRING</type>
+      <default>https://www.linkedin.com/in/hyewon-kwak-7ba5531b7/</default>
+    </variable>   
+  </variablegroup>   
+  </variables>
+  
 </skin>

@@ -571,12 +571,14 @@ a:active {
   align-items: center;
 }
 .b-article .related-list .related-info {
+  width: 100%;
   padding: 10px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 .b-article .related-list .related-info .related-text {
+  width: 100%;
   font-size: 1.2rem;
 }
 .b-article .related-list .related-info .related-date {
@@ -909,8 +911,9 @@ a:active {
 }
 #aside .profile {
   margin-top: 30px;
-  min-width: 220px;
+  min-width: 250px;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -921,18 +924,15 @@ a:active {
   color: #61dbfb;
 }
 #aside .profile #desc {
+  display: flex;
   margin-top: 10px;
-  font-size: 20px;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
+  font-size: 15px;
 }
 #aside .profile .title {
   margin-top: -50px !important;
 }
 #aside .profile .nes-container {
-  width: 220px;
-  min-height: 100px;
+  width: 250px;
 }
 #aside .profile .nes-container img {
   width: 150px;
@@ -1078,16 +1078,10 @@ a:active {
 @keyframes kirbyMoving {}
 /* aside end */
 #footer {
-  height: 200px;
-  width: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  font-family: "cute";
-}
-#footer div {
-  margin-top: 20px;
+  justify-content: center;
+  height: 30px;
 }
 
 @media only screen and (max-width: 1290px) {
